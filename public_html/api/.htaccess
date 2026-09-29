@@ -1,0 +1,4 @@
+# Keep logs, sign-up data and the "already emailed" list private.
+<FilesMatch "\.(txt|log|csv)$">
+    Require all denied
+</FilesMatch>

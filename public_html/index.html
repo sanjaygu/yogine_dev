@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>yogine.dev — AI coding training and enterprise solutions</title>
+<meta name="description" content="AI coding training for developers and solutions for enterprises: hardened skills and agents, and a governance framework for security, compliance and LLM cost. Start with a free 90-minute Foundation session.">
+<meta name="theme-color" content="#14171c">
+<link rel="canonical" href="https://yogine.dev/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314171c'/%3E%3Ctext x='32' y='47' font-size='44' text-anchor='middle' font-family='Georgia,serif' font-weight='700' fill='%23d9a635'%3Ey%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="yogine.dev">
+<meta property="og:title" content="yogine.dev — AI coding training and enterprise solutions">
+<meta property="og:description" content="AI coding training for developers and solutions for enterprises: hardened skills and agents, and a governance framework for security, compliance and LLM cost. Start with a free 90-minute Foundation session.">
+<meta property="og:url" content="https://yogine.dev/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14171c;
+    --ink-2:#1b1f26;
+    --panel:#20242c;
+    --rule:#333a45;
+    --paper:#ece8de;
+    --paper-dim:#a9a79d;
+    --amber:#d9a635;
+    --amber-dim:#b6883f;
+    --teal:#4c8c81;
+    --rust:#c1573b;
+    --radius-s:3px;
+    --radius-m:6px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0 0 .4em 0;
+    line-height:1.12;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  p{margin:0 0 1em 0; max-width:62ch;}
+  button{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  .site-header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(20,23,28,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.28rem;
+    text-decoration:none; color:var(--paper);
+    letter-spacing:-0.01em;
+  }
+  .logo span{color:var(--amber);}
+  nav.primary-nav{display:flex; align-items:center; gap:30px;}
+  nav.primary-nav a{
+    text-decoration:none; color:var(--paper-dim); font-size:.94rem;
+    padding:6px 2px; border-bottom:2px solid transparent;
+  }
+  nav.primary-nav a:hover, nav.primary-nav a.active{color:var(--paper); border-bottom-color:var(--amber);}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:11px 20px; border-radius:var(--radius-s);
+    font-size:.92rem; font-weight:500; text-decoration:none;
+    border:1px solid transparent; cursor:pointer;
+    background:transparent; -webkit-appearance:none; appearance:none; font-family:inherit;
+  }
+  .btn-primary{background:var(--amber); color:#1a1508;}
+  .btn-primary:hover{background:#e6b346;}
+  .btn-ghost{border-color:var(--rule); color:var(--paper); background:transparent;}
+  .btn-ghost:hover{border-color:var(--paper-dim);}
+  .nav-toggle{display:none; background:none; border:1px solid var(--rule); color:var(--paper); padding:8px 10px; border-radius:var(--radius-s);}
+
+  @media (max-width:820px){
+    nav.primary-nav{
+      position:absolute; top:100%; left:0; right:0; background:var(--ink-2);
+      flex-direction:column; align-items:flex-start; gap:0;
+      max-height:0; overflow:hidden; visibility:hidden;
+      transition:max-height .25s ease, visibility 0s linear .25s;
+    }
+    nav.primary-nav.open{
+      max-height:400px; visibility:visible; border-bottom:1px solid var(--rule);
+      transition:max-height .25s ease, visibility 0s;
+    }
+    nav.primary-nav a{width:100%; padding:16px 28px; border-bottom:1px solid var(--rule);}
+    nav.primary-nav a.active{border-bottom:1px solid var(--rule); box-shadow:inset 3px 0 0 var(--amber);}
+    .nav-toggle{display:inline-flex;}
+    .header-cta{padding:9px 12px; font-size:.85rem;}
+    .header-row{padding:14px 20px;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:72px 0 64px;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:center;}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .eyebrow-line{
+    display:flex; align-items:center; gap:10px; color:var(--teal);
+    font-family:'IBM Plex Mono', monospace; font-size:.8rem; margin-bottom:18px;
+  }
+  .eyebrow-line::before{content:''; width:22px; height:1px; background:var(--teal);}
+  .hero h1{font-size:2.7rem; max-width:14ch;}
+  .hero .lede{font-size:1.08rem; color:var(--paper-dim); max-width:44ch;}
+  .hero-actions{display:flex; gap:14px; margin-top:26px; flex-wrap:wrap;}
+
+  .term-window{
+    border:1px solid var(--rule); border-radius:var(--radius-m); overflow:hidden;
+    background:var(--panel); box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px; padding:10px 14px;
+    border-bottom:1px solid var(--rule); background:var(--ink-2);
+  }
+  .term-dot{width:9px; height:9px; border-radius:50%; background:var(--rule);}
+  .term-title{margin-left:10px; font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--paper-dim);}
+  .term-body{padding:20px; font-family:'IBM Plex Mono', monospace; font-size:.82rem;}
+  .term-col-label{color:var(--paper-dim); font-size:.72rem; text-transform:none; margin-bottom:10px;}
+  .term-row{display:flex; gap:8px; margin-bottom:9px; align-items:flex-start;}
+  .term-row .mark{width:14px; flex-shrink:0;}
+  .term-row.bad .mark{color:var(--rust);}
+  .term-row.good .mark{color:var(--teal);}
+  .term-divider{height:1px; background:var(--rule); margin:16px 0;}
+
+  /* ---------- Sections ---------- */
+  section{padding:64px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:36px; flex-wrap:wrap;}
+  .section-head h2{font-size:1.9rem; max-width:16ch;}
+  .section-head .desc{color:var(--paper-dim); max-width:42ch; font-size:.98rem;}
+
+  .stat-strip{border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:22px 0;}
+  .stat-strip .wrap{display:flex; gap:40px; flex-wrap:wrap; color:var(--paper-dim); font-size:.9rem; font-family:'IBM Plex Mono', monospace;}
+  .stat-strip strong{color:var(--paper); font-family:'IBM Plex Sans', sans-serif; font-weight:600;}
+
+  /* Course list — numbered progression, not cards-with-shadows */
+  .course-list{border-top:1px solid var(--rule);}
+  .course-row{
+    display:grid; grid-template-columns:64px 1.4fr 1.6fr auto; gap:28px;
+    padding:30px 0; border-bottom:1px solid var(--rule); align-items:start;
+  }
+  @media (max-width:760px){.course-row{grid-template-columns:40px 1fr; }
+    .course-row .course-mid, .course-row .course-cta{grid-column:1 / -1;}
+  }
+  .course-index{font-family:'IBM Plex Mono', monospace; color:var(--amber-dim); font-size:.95rem; padding-top:4px;}
+  .course-name h3{font-size:1.28rem; margin-bottom:6px;}
+  .course-level{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:.7rem;
+    color:var(--teal); border:1px solid var(--teal); border-radius:20px; padding:2px 10px; margin-bottom:10px;
+  }
+  .course-audience{
+    font-size:.86rem; color:var(--paper-dim); margin:6px 0 0; padding-left:14px;
+    border-left:2px solid var(--rule); max-width:36ch;
+  }
+  .course-value{
+    font-size:.9rem; color:var(--paper); margin:14px 0 0; padding-left:14px;
+    border-left:2px solid var(--amber); max-width:40ch;
+  }
+  .course-bullets{margin:0; padding:0; list-style:none;}
+  .course-bullets li{
+    position:relative; padding-left:18px; margin-bottom:8px; font-size:.94rem; color:var(--paper-dim);
+  }
+  .course-bullets li::before{content:'–'; position:absolute; left:0; color:var(--rule);}
+  .course-cta{display:flex; flex-direction:column; gap:10px; align-items:flex-end; padding-top:4px;}
+  @media (max-width:760px){.course-cta{align-items:flex-start;}}
+  .price-tag{font-family:'IBM Plex Mono', monospace; font-size:1.05rem;}
+  .price-was{
+    font-family:'IBM Plex Mono', monospace; font-size:.82em; color:var(--paper-dim);
+    text-decoration:line-through; margin-right:6px;
+  }
+  .discount-badge{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:.7rem;
+    color:var(--rust); border:1px solid var(--rust); border-radius:20px; padding:2px 9px;
+  }
+  .price-note{font-size:.74rem; color:var(--paper-dim);}
+  .discount-hint{font-size:.8rem; color:var(--paper-dim); margin-top:10px;}
+  .promo-banner{
+    background:var(--amber); color:#1a1508; font-family:'IBM Plex Mono', monospace;
+    font-size:.85rem; text-align:center; padding:12px 16px; border-radius:var(--radius-s);
+    margin-bottom:28px;
+  }
+  .promo-banner strong{font-weight:700; letter-spacing:.02em;}
+  .start-note{
+    font-family:'IBM Plex Mono', monospace; font-size:.68em; font-weight:400;
+    color:var(--teal); vertical-align:middle;
+  }
+
+  /* Events */
+  .event-table{border-top:1px solid var(--rule);}
+  .session-note{
+    margin-top:24px; font-size:.92rem; color:var(--paper-dim);
+  }
+  .session-note a{color:var(--amber); text-decoration:none;}
+  .session-note a:hover{text-decoration:underline;}
+  .event-row{
+    display:grid; grid-template-columns:1fr 130px 160px auto; gap:20px;
+    padding:20px 0; border-bottom:1px solid var(--rule); align-items:center;
+  }
+  @media (max-width:760px){.event-row{grid-template-columns:1fr; gap:6px;}}
+  .event-course{font-weight:500;}
+  .event-date{font-family:'IBM Plex Mono', monospace; color:var(--paper-dim); font-size:.85rem;}
+  .event-loc{color:var(--paper-dim); font-size:.85rem;}
+  .event-address{color:var(--paper-dim); font-size:.78rem; opacity:.8; margin-top:2px;}
+  .venue-link{color:var(--teal); text-decoration:none;}
+  .venue-link:hover{text-decoration:underline;}
+  .event-row .btn{white-space:nowrap;}
+
+  footer{border-top:1px solid var(--rule); padding:44px 0; color:var(--paper-dim); font-size:.85rem;}
+  footer .foot-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;}
+
+  /* ---------- Forms / signup ---------- */
+  .form-page{padding:56px 0 90px;}
+  .steps{display:flex; gap:0; margin-bottom:44px; border:1px solid var(--rule); border-radius:var(--radius-m); overflow:hidden;}
+  .step{flex:1; padding:14px 12px; text-align:center; font-size:.8rem; color:var(--paper-dim); border-right:1px solid var(--rule); font-family:'IBM Plex Mono', monospace;}
+  .step:last-child{border-right:none;}
+  .step .num{display:block; font-family:'Fraunces', serif; font-size:1.1rem; color:var(--paper-dim); margin-bottom:2px;}
+  .step.active{background:var(--panel); color:var(--paper);}
+  .step.active .num{color:var(--amber);}
+  .step.done{color:var(--teal);}
+  .step.done .num{color:var(--teal);}
+
+  .form-card{max-width:640px;}
+  .field{margin-bottom:22px;}
+  .field label{display:block; font-size:.86rem; color:var(--paper-dim); margin-bottom:7px;}
+  .optional-tag{font-size:.78em; opacity:.75;}
+  .field input, .field select, .field textarea{
+    width:100%; background:var(--ink-2); border:1px solid var(--rule); color:var(--paper);
+    padding:12px 14px; border-radius:var(--radius-s); font-size:.95rem; font-family:inherit;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--amber);}
+  .field textarea{min-height:100px; resize:vertical;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:600px){.field-row{grid-template-columns:1fr;}}
+  .field-error{color:var(--rust); font-size:.78rem; margin-top:6px; display:none;}
+  .field.invalid input, .field.invalid select, .field.invalid textarea{border-color:var(--rust);}
+  .field.invalid .field-error{display:block;}
+  .form-actions{display:flex; justify-content:space-between; align-items:center; margin-top:32px; gap:14px;}
+  .session-pick{border:1px solid var(--rule); border-radius:var(--radius-m); padding:14px 16px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer;}
+  .session-pick input{width:auto;}
+  .session-pick.selected{border-color:var(--amber);}
+  .summary-box{border:1px solid var(--rule); border-radius:var(--radius-m); padding:20px 22px; margin-bottom:28px; background:var(--panel);}
+  .summary-row{display:flex; justify-content:space-between; padding:7px 0; font-size:.92rem; border-bottom:1px solid var(--rule);}
+  .summary-row:last-child{border-bottom:none; font-weight:600; padding-top:12px;}
+  .disclaimer{font-size:.78rem; color:var(--paper-dim); border-left:2px solid var(--teal); padding-left:12px; margin-top:20px;}
+  .policy-list{margin:14px 0 0; padding:0; list-style:none;}
+  .policy-list li{position:relative; padding-left:20px; margin-bottom:10px; color:var(--paper-dim); font-size:.95rem;}
+  .policy-list li::before{content:'–'; position:absolute; left:0; color:var(--rule);}
+  .policy-list li strong{color:var(--paper);}
+  .confirm-box{text-align:center; max-width:520px; margin:0 auto; padding:40px 0;}
+  .confirm-mark{font-family:'IBM Plex Mono', monospace; color:var(--teal); font-size:.85rem; margin-bottom:14px;}
+
+  .card-icons{display:flex; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:.7rem; color:var(--paper-dim);}
+
+  .wallet-note{color:var(--paper-dim); font-size:.9rem; margin-bottom:20px;}
+  .wallet-btn{width:100%; justify-content:center; padding:14px; font-size:.98rem;}
+  .qr-box{
+    background:#f2efe6; border-radius:var(--radius-m); padding:24px;
+    display:inline-flex; flex-direction:column; align-items:center; gap:12px;
+  }
+  .qr-box img{display:block; width:180px; height:180px; border-radius:2px;}
+  .qr-caption{font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:#4a4638; text-align:center; max-width:22ch;}
+  .qr-link{font-size:.78rem; color:var(--paper-dim); word-break:break-all; margin-top:14px;}
+  .processing{display:flex; align-items:center; gap:10px; color:var(--paper-dim); font-size:.9rem;}
+  .spinner{width:14px; height:14px; border-radius:50%; border:2px solid var(--rule); border-top-color:var(--amber); animation:spin .7s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .pay-divider{
+    display:flex; align-items:center; gap:12px; margin:4px 0 20px;
+    color:var(--paper-dim); font-size:.78rem;
+  }
+  .pay-divider::before, .pay-divider::after{content:''; flex:1; height:1px; background:var(--rule);}
+
+  /* Trust callout around the redirect to Stripe */
+  .stripe-callout{
+    border:1px solid var(--rule); border-left:3px solid #7a73ff;
+    border-radius:var(--radius-m); padding:22px 24px; margin-bottom:24px;
+  }
+  .stripe-badge{
+    display:inline-flex; align-items:center; gap:6px; font-size:.78rem;
+    color:var(--paper-dim); margin-bottom:12px;
+  }
+  .stripe-mention{color:#9b95ff; font-weight:700;}
+  .btn-stripe{background:#635bff; color:#fff;}
+  .btn-stripe:hover{background:#544ee0;}
+  .btn-stripe strong{font-weight:700;}
+
+  /* ---------- Additions ---------- */
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; margin:-1px; padding:0;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+  .skip-link{
+    position:absolute; left:16px; top:-60px; z-index:60;
+    background:var(--amber); color:#1a1508; padding:10px 16px; border-radius:var(--radius-s);
+    text-decoration:none; font-weight:500;
+  }
+  .skip-link:focus{top:12px;}
+  [tabindex="-1"]:focus{outline:none;}
+  .noscript-note{max-width:640px; margin:0 auto; padding:64px 28px;}
+
+  fieldset.field{border:0; padding:0; min-width:0;}
+  fieldset.field legend{font-size:.86rem; color:var(--paper-dim); margin-bottom:7px; padding:0;}
+  .session-pick:focus-within{outline:2px solid var(--amber); outline-offset:2px;}
+  .form-note{font-size:.82rem; color:var(--paper-dim); margin:0;}
+  .form-note a{color:var(--amber);}
+  button:disabled{opacity:.55; cursor:not-allowed;}
+  .btn-stripe:disabled{cursor:default;}
+  footer .foot-links a{color:var(--paper-dim); font-size:.9rem; margin-right:18px;}
+
+  .agenda{margin:0; padding:0; list-style:none; border-top:1px solid var(--rule);}
+  .agenda li{display:grid; grid-template-columns:64px 1fr; gap:20px; padding:22px 0; border-bottom:1px solid var(--rule);}
+  .agenda h3{font-size:1.1rem; margin-bottom:4px;}
+  .agenda p{margin:0; color:var(--paper-dim); font-size:.94rem;}
+  @media (max-width:760px){.agenda li{grid-template-columns:40px 1fr; gap:12px;}}
+  .two-col{display:grid; grid-template-columns:1fr 1.4fr; gap:56px; align-items:start;}
+  @media (max-width:820px){.two-col{grid-template-columns:1fr; gap:40px;}}
+  .faq details{border-bottom:1px solid var(--rule); padding:16px 0;}
+  .faq details:first-of-type{border-top:1px solid var(--rule);}
+  .faq summary{cursor:pointer; font-weight:500;}
+  .faq details p{margin:10px 0 0; color:var(--paper-dim); font-size:.94rem;}
+  .faq details a{color:var(--amber);}
+  .hero h1.wide{max-width:20ch;}
+  .paths{border:1px solid var(--rule); border-radius:var(--radius-m); overflow:hidden;}
+  .path-card{display:block; padding:28px; text-decoration:none; color:inherit; background:var(--panel);}
+  .path-card + .path-card{border-top:1px solid var(--rule);}
+  .path-card:hover{background:var(--ink-2);}
+  .path-card h2{font-size:1.45rem; margin-bottom:6px;}
+  .path-card p{margin:0 0 14px; color:var(--paper-dim); font-size:.95rem;}
+  .path-audience{font-family:'IBM Plex Mono', monospace; font-size:.75rem; color:var(--teal); margin-bottom:8px;}
+  .path-go{color:var(--amber); font-size:.92rem; font-weight:500;}
+  .path-card:hover .path-go{text-decoration:underline;}
+
+  .risk-grid{display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--rule); border-left:1px solid var(--rule);}
+  .risk-grid > div{padding:24px 26px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule);}
+  .risk-grid h3{font-size:1.1rem; margin-bottom:6px;}
+  .risk-grid p{margin:0; color:var(--paper-dim); font-size:.94rem;}
+  @media (max-width:700px){.risk-grid{grid-template-columns:1fr;}}
+
+  .cols-3{display:grid; grid-template-columns:repeat(3, 1fr); border-top:1px solid var(--rule);}
+  .cols-3 > div{padding:26px 26px 8px 0;}
+  .cols-3 > div + div{padding-left:26px; border-left:1px solid var(--rule);}
+  .cols-3 h3{font-size:1.2rem; margin-bottom:12px;}
+  .cols-3 p{margin:0; color:var(--paper-dim); font-size:.94rem;}
+  @media (max-width:820px){
+    .cols-3{grid-template-columns:1fr; border-top:0;}
+    .cols-3 > div, .cols-3 > div + div{padding:24px 0 8px; border-left:0; border-top:1px solid var(--rule);}
+  }
+
+  .cta-band{border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:48px 0;}
+  .cta-band .wrap{display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;}
+  .cta-band h2{font-size:1.7rem; margin:0 0 6px;}
+  .cta-band p{margin:0; color:var(--paper-dim);}
+
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
+  .form-error{color:var(--rust); font-size:.85rem; margin:14px 0 0;}
+</style>
+</head>
+<body>
+
+<a class="skip-link" id="skipLink" href="#/">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-row">
+    <a href="#/" class="logo">yogine<span>.dev</span></a>
+    <nav class="primary-nav" id="primaryNav" aria-label="Main">
+      <a href="#/" data-route="/">Home</a>
+      <a href="#/training" data-route="/training">Training</a>
+      <a href="#/solutions" data-route="/solutions">Solutions</a>
+      <a href="#/events" data-route="/events">Upcoming sessions</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="#/signup" id="headerCta" class="btn btn-primary header-cta">Reserve a seat</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="app" tabindex="-1">
+  <noscript>
+    <div class="noscript-note">
+      <h1>yogine.dev</h1>
+      <p>AI coding training for developers and solutions for enterprises: hardened skills and agents, and a governance framework for security, compliance and LLM cost. This site needs JavaScript to show its pages and take registrations.</p>
+      <p>Prefer email? Write to <a href="mailto:hello@yogine.dev">hello@yogine.dev</a>.</p>
+    </div>
+  </noscript>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>
+      <div class="logo" style="font-size:1.1rem; margin-bottom:8px;">yogine<span>.dev</span></div>
+      <div>AI coding training for developers, and solutions for enterprises.</div>
+    </div>
+    <div>
+      <div>Questions? Write to us.</div>
+      <div><a href="mailto:hello@yogine.dev" style="color:var(--paper-dim);">hello@yogine.dev</a></div>
+      <div class="foot-links" style="margin-top:10px;">
+        <a href="#/refund-policy">Refund &amp; Cancellation Policy</a>
+        <a href="#/privacy">Privacy notice</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------------- Data ---------------- */
+const SITE_URL = 'https://yogine.dev/';
+
+const VENUE_ICC = {
+  name: 'India Community Center (ICC)',
+  street: '525 Los Coches St', city: 'Milpitas', region: 'CA', zip: '95035',
+  url: 'https://www.indiacc.org'
+};
+
+const COURSES = [
+  {
+    slug: 'foundation',
+    index: '01',
+    name: 'Coding with AI Agents and Skills',
+    showNextStart: true,
+    nextPrefix: 'Next session',
+    level: 'Level 01 · Foundation',
+    price: 0,
+    free: true,
+    duration: '90 minutes · live session',
+    audience: 'Developers and engineering leads curious about AI-assisted coding who want a first look before committing to a full workshop.',
+    bullets: [
+      'A 90-minute introduction to AI-assisted agentic coding: how it moved from one-off prompts, to agents, to reusable skills.',
+      'See what a skill is — scope, triggers, examples and expected output — and how it compares with raw prompting on the same task.',
+      'Learn where skills pay off most: code review standards, test generation, documentation and codebase onboarding.',
+      'Free to attend. If you want to go hands-on with your own repo afterwards, the Professional workshop is the next step.'
+    ]
+  },
+  {
+    slug: 'professional',
+    index: '02',
+    name: 'AI Agentic Coding & Skills for Developers — Professional',
+    showNextStart: true,
+    level: 'Level 02 · Professional',
+    price: 199,
+    duration: '7 hrs hands-on (1 day in person, or 3 virtual sessions) + 2 months virtual support',
+    audience: 'Working professionals with industry experience in software development and coding, but new to AI-assisted coding.',
+    bullets: [
+      'Built for working developers with real industry experience who want to master AI-assisted agentic coding.',
+      'Understand the evolution of AI coding and the current landscape — skills, agents, prompts, MCP, memory management, context, and other topics.',
+      'Learn how to use skills and agents well, then how to find and evaluate good ones before you adopt them. We also teach you how to build your own skills.',
+      'You walk away with a 50-skill plugin pack, ready to build your next application. We will support you until you master what we taught you.'
+    ]
+  },
+  {
+    slug: 'advanced',
+    index: '03',
+    name: 'AI Agentic Coding & Skills for Developers — Advanced',
+    level: 'Level 03 · Advanced',
+    price: 495,
+    duration: '1 day · 7 hrs in person + 2 months virtual support',
+    audience: 'Working professionals who\'ve completed our Professional course, or already have an equivalent understanding.',
+    bullets: [
+      'Built for developers who\'ve completed our Professional course, or already work at that level.',
+      'Learn advanced techniques for writing skills, hosting your own MCP server, working with frameworks, optimizing LLM cost, hosting your own LLM, and building context.',
+      'You walk away with the Professional and Advanced skill plugin pack, ready to build your next application or become a superstar developer in your org. We will support you until you master what we taught you.'
+    ]
+  },
+  {
+    slug: 'enterprise-sdlc',
+    index: '04',
+    name: 'Governed Agentic SDLC',
+    level: 'Level 04 · Enterprise',
+    price: null,
+    custom: true,
+    duration: '1+ days · scoped to your org',
+    audience: 'Engineering leads and organizations ready to roll out agentic coding — and govern it — across their whole team.',
+    bullets: [
+      'Everything in our developer-facing skills training, brought to your whole engineering org.',
+      'Governance of skills and agents — who\'s allowed to build, publish, and run them, and against which systems.',
+      'Security and compliance guardrails built for agentic development from the start, not bolted on after.',
+      'Enforcement of standards and templates, so every team\'s skills meet the same bar before they ship.',
+      'Cost monitoring and optimization — track and control LLM spend across your organization.',
+      'A curriculum scoped to your org\'s stack, maturity level, and goals — talk to us and we\'ll build it with you.'
+    ]
+  }
+];
+
+/* start/end are ISO dates (used to hide past sessions); startAt/endAt are optional
+   full timestamps with UTC offset, used for search-engine event data. `date` is
+   the human-readable label shown on the page. */
+const EVENTS = [
+  { id:'e1', courseSlug:'professional', date:'Oct 3, 2026',  start:'2026-10-03', end:'2026-10-03', venue:VENUE_ICC },
+  { id:'e2', courseSlug:'professional', date:'Oct 10, 2026', start:'2026-10-10', end:'2026-10-10', venue:VENUE_ICC },
+  { id:'e3', courseSlug:'professional', date:'Oct 13, 15 & 20, 2026', start:'2026-10-13', end:'2026-10-20', locationLabel:'Virtual · 3 sessions', virtual:true },
+  { id:'e4', courseSlug:'advanced',     date:'Oct 17, 2026', start:'2026-10-17', end:'2026-10-17', venue:VENUE_ICC },
+  { id:'e5', courseSlug:'foundation',        date:'Oct 6, 2026 · 4:00 PM PT', start:'2026-10-06', end:'2026-10-06', startAt:'2026-10-06T16:00:00-07:00', endAt:'2026-10-06T17:30:00-07:00', locationLabel:'Virtual · 90 min', virtual:true }
+];
+
+const ENTERPRISE_CONTACT = 'mailto:hello@yogine.dev?subject=Enterprise%20SDLC%20training%20inquiry';
+
+/* Free sessions are registered by a small PHP endpoint on the same host. */
+const REGISTER_ENDPOINT = '/api/register.php';
+
+const SOLUTIONS_CONTACT = 'mailto:hello@yogine.dev?subject=' + encodeURIComponent('Solutions inquiry') +
+  '&body=' + encodeURIComponent('Company:\nSize of engineering organization:\nWhere you are today (individual use, shared skill library, governed rollout):\nWhat you want to solve:\n');
+const SESSION_REQUEST_CONTACT = 'mailto:hello@yogine.dev?subject=Requesting%20a%20new%20session';
+
+/* One Stripe Payment Link per course. To change a price, create a new link
+   in Stripe and paste its URL here. A course with no link shows a
+   "write to us" fallback instead of a checkout button. */
+const STRIPE_PAYMENT_LINKS = {
+  professional: '', // paste the $199 Payment Link URL here
+  advanced: 'https://book.stripe.com/bJedR9a8kdVLd9h8oH2Ry02'
+};
+
+/* Registration details are sent to a Google Apps Script web app when someone
+   finishes the "Your details" step. Leave blank to turn this off. */
+const LEAD_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxouIpPL4snWhchSdWFfXIzbKs2og6Ij4rCUqtqcimkCcS3lYsdwNKydz2S87tQrIdn/exec';
+
+/* ---------------- Helpers ---------------- */
+function esc(v){
+  return String(v == null ? '' : v).replace(/[&<>"']/g, c => (
+    { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]
+  ));
+}
+
+function courseBySlug(slug){ return COURSES.find(c => c.slug === slug); }
+function eventById(id){ return EVENTS.find(e => e.id === id); }
+
+function isUpcoming(ev){ return new Date(ev.end + 'T23:59:59') >= new Date(); }
+function upcomingEvents(){
+  return EVENTS.filter(isUpcoming).sort((a, b) => a.start.localeCompare(b.start));
+}
+function upcomingEventsFor(slug){ return upcomingEvents().filter(e => e.courseSlug === slug); }
+
+function nextStartLabel(slug){
+  const next = upcomingEventsFor(slug)[0];
+  if (!next) return '';
+  const c = courseBySlug(slug);
+  const prefix = (c && c.nextPrefix) || 'Next Batch Starts';
+  const d = new Date(next.start + 'T00:00:00');
+  return prefix + ' ' + d.toLocaleDateString('en-US', { month:'short', day:'numeric' });
+}
+
+function eventLocation(ev){ return ev.venue ? 'SF Bay Area · ' + ev.venue.name : (ev.locationLabel || ''); }
+function eventAddress(ev){
+  const v = ev.venue;
+  return v ? `${v.street}, ${v.city}, ${v.region} ${v.zip}` : '';
+}
+
+/* ---------------- Wizard state ----------------
+   Kept in sessionStorage so a refresh mid-signup doesn't wipe the form.
+   It is per-tab and cleared when the tab closes. */
+const WIZARD_KEY = 'yogine_wizard';
+function loadWizard(){
+  try { return JSON.parse(sessionStorage.getItem(WIZARD_KEY) || '{}') || {}; }
+  catch (err) { return {}; }
+}
+function saveWizard(){
+  try { sessionStorage.setItem(WIZARD_KEY, JSON.stringify(wizard)); } catch (err) { /* storage unavailable */ }
+}
+function clearWizard(){
+  try { sessionStorage.removeItem(WIZARD_KEY); } catch (err) { /* storage unavailable */ }
+}
+const wizard = Object.assign({
+  courseSlug: null, eventId: null,
+  name: '', email: '', phone: '',
+  codingExp: '', aiExp: '', expectations: '',
+  leadSentFor: ''
+}, loadWizard());
+
+/* ---------------- Stripe links ----------------
+   The link opened by the button may carry the attendee's email so Stripe
+   pre-fills it. The QR code never does: it is drawn by a third-party image
+   service, so it only ever encodes the bare link plus a course/session
+   reference. */
+function referenceId(slug){
+  return [slug, wizard.eventId].filter(Boolean).join('_').replace(/[^A-Za-z0-9_-]/g, '');
+}
+function stripeLinkFor(slug, opts){
+  const base = STRIPE_PAYMENT_LINKS[slug];
+  if (!base) return null;
+  const params = new URLSearchParams();
+  if (opts && opts.prefillEmail && wizard.email) params.set('prefilled_email', wizard.email);
+  const ref = referenceId(slug);
+  if (ref) params.set('client_reference_id', ref);
+  const qs = params.toString();
+  return qs ? `${base}${base.includes('?') ? '&' : '?'}${qs}` : base;
+}
+function qrImageSrc(data){
+  return 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=8&data=' + encodeURIComponent(data);
+}
+
+/* ---------------- Lead capture ----------------
+   Fires once when "Your details" is completed, so unfinished registrations
+   can be followed up. Fire-and-forget: never blocks or breaks the flow. */
+function captureLead(){
+  if (!LEAD_WEBHOOK_URL) return;
+  if (wizard.leadSentFor === wizard.email) return; // already sent for this email
+  const course = wizard.courseSlug ? courseBySlug(wizard.courseSlug) : null;
+  const session = wizard.eventId ? eventById(wizard.eventId) : null;
+  const payload = {
+    timestamp: new Date().toISOString(),
+    name: wizard.name,
+    email: wizard.email,
+    phone: wizard.phone,
+    codingExperience: wizard.codingExp,
+    aiExperience: wizard.aiExp,
+    expectations: wizard.expectations,
+    course: course ? course.name : '',
+    session: session ? `${session.date} · ${eventLocation(session)}` : ''
+  };
+  wizard.leadSentFor = wizard.email;
+  saveWizard();
+  // no-cors: Apps Script web apps send no CORS headers; the write still happens.
+  try {
+    fetch(LEAD_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+  } catch (err) { /* never block the person's flow */ }
+}
+
+/* ---------------- Search-engine event data ---------------- */
+function injectEventSchema(){
+  const events = upcomingEvents();
+  if (!events.length) return;
+  const items = events.map(ev => {
+    const c = courseBySlug(ev.courseSlug);
+    const item = {
+      '@type': 'Event',
+      name: c.name,
+      description: c.audience,
+      startDate: ev.startAt || ev.start,
+      endDate: ev.endAt || ev.end,
+      eventStatus: 'https://schema.org/EventScheduled',
+      organizer: { '@type': 'Organization', name: 'yogine.dev', url: SITE_URL },
+      offers: {
+        '@type': 'Offer',
+        price: String(c.price),
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        url: `${SITE_URL}#/signup?course=${c.slug}&event=${ev.id}`
+      }
+    };
+    if (ev.virtual){
+      item.eventAttendanceMode = 'https://schema.org/OnlineEventAttendanceMode';
+      item.location = { '@type': 'VirtualLocation', url: SITE_URL };
+    } else {
+      item.eventAttendanceMode = 'https://schema.org/OfflineEventAttendanceMode';
+      item.location = {
+        '@type': 'Place',
+        name: ev.venue.name,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: ev.venue.street,
+          addressLocality: ev.venue.city,
+          addressRegion: ev.venue.region,
+          postalCode: ev.venue.zip,
+          addressCountry: 'US'
+        }
+      };
+    }
+    return item;
+  });
+  const tag = document.createElement('script');
+  tag.type = 'application/ld+json';
+  tag.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': items });
+  document.head.appendChild(tag);
+}
+
+/* ---------------- Router ---------------- */
+const app = document.getElementById('app');
+
+function parseHash(){
+  // Stripe can send people back with ?registered=1 if it won't accept a #fragment.
+  if (!location.hash && new URLSearchParams(location.search).get('registered') === '1'){
+    return { path: '/registered', params: new URLSearchParams() };
+  }
+  const raw = location.hash.replace(/^#/, '') || '/';
+  const [path, qs] = raw.split('?');
+  const p = path || '/';
+  return { path: p === '/courses' ? '/training' : p, params: new URLSearchParams(qs || '') }; // /courses is the old URL
+}
+
+function navigate(hash){ location.hash = hash; }
+
+function setActiveNav(path){
+  document.querySelectorAll('.primary-nav a').forEach(a => {
+    const on = a.dataset.route === path;
+    a.classList.toggle('active', on);
+    if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+}
+
+function setHeaderCta(path){
+  const cta = document.getElementById('headerCta');
+  if (!cta) return;
+  if (path === '/solutions'){
+    cta.textContent = 'Talk to us';
+    cta.setAttribute('href', SOLUTIONS_CONTACT);
+  } else {
+    cta.textContent = 'Reserve a seat';
+    cta.setAttribute('href', '#/signup');
+  }
+}
+
+function titleFor(path){
+  const t = {
+    '/': 'yogine.dev — AI coding training and enterprise solutions',
+    '/training': 'Training — yogine.dev',
+    '/solutions': 'Solutions — yogine.dev',
+    '/events': 'Upcoming sessions — yogine.dev',
+    '/refund-policy': 'Refund & Cancellation Policy — yogine.dev',
+    '/privacy': 'Privacy notice — yogine.dev',
+    '/registered': 'Thank you — yogine.dev'
+  };
+  if (t[path]) return t[path];
+  if (path.indexOf('/signup') === 0) return 'Reserve a seat — yogine.dev';
+  return t['/'];
+}
+
+let firstRender = true;
+function render(){
+  const { path, params } = parseHash();
+  setActiveNav(path);
+  setHeaderCta(path);
+  document.title = titleFor(path);
+  window.scrollTo(0, 0);
+
+  if (path === '/') renderHome();
+  else if (path === '/training') renderTraining();
+  else if (path === '/solutions') renderSolutions();
+  else if (path === '/events') renderEvents();
+  else if (path === '/signup') renderSignupStep1(params);
+  else if (path === '/signup/course') renderSignupStep2(params);
+  else if (path === '/signup/payment') renderSignupStep3();
+  else if (path === '/registered') renderRegistered(params);
+  else if (path === '/refund-policy') renderRefundPolicy();
+  else if (path === '/privacy') renderPrivacy();
+  else renderHome();
+
+  // Move keyboard/screen-reader focus to the new page's heading after navigation.
+  if (!firstRender){
+    const heading = app.querySelector('h1, h2');
+    if (heading){
+      heading.setAttribute('tabindex', '-1');
+      heading.focus({ preventScroll: true });
+    }
+  }
+  firstRender = false;
+}
+
+window.addEventListener('hashchange', render);
+// Coming back from Stripe with the browser's Back button restores a frozen page.
+window.addEventListener('pageshow', (e) => { if (e.persisted) render(); });
+window.addEventListener('DOMContentLoaded', () => {
+  render();
+  injectEventSchema();
+
+  const nav = document.getElementById('primaryNav');
+  const toggle = document.getElementById('navToggle');
+  const setOpen = (open) => {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+  nav.addEventListener('click', (e) => { if (e.target.tagName === 'A') setOpen(false); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('open')){ setOpen(false); toggle.focus(); }
+  });
+
+  document.getElementById('skipLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    app.focus();
+  });
+});
+
+/* ---------------- Views ---------------- */
+function courseRow(c, i, bulletLimit){
+  const next = c.showNextStart ? nextStartLabel(c.slug) : '';
+  const bullets = bulletLimit ? c.bullets.slice(0, bulletLimit) : c.bullets;
+  return `
+    <div class="course-row">
+      <div class="course-index">${c.index}</div>
+      <div class="course-name">
+        <span class="course-level">${c.level}</span>
+        <h3>${c.name}${next ? ` <span class="start-note">(${next})</span>` : ''}</h3>
+        <p style="margin:0; color:var(--paper-dim); font-size:.88rem;">${c.duration}</p>
+        <p class="course-audience">${c.audience}</p>
+      </div>
+      <div class="course-mid">
+        <ul class="course-bullets">
+          ${bullets.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="course-cta">${courseCta(c)}</div>
+    </div>`;
+}
+
+function courseCta(c){
+  if (c.custom){
+    return `
+      <span class="price-tag">Custom</span>
+      <span class="price-note">scoped to your org</span>
+      <a class="btn btn-primary" href="${ENTERPRISE_CONTACT}">Talk to us</a>
+    `;
+  }
+  if (c.free){
+    return `
+      <span class="price-tag">Free</span>
+      <a class="btn btn-primary" href="#/signup?course=${c.slug}">Reserve a seat</a>
+    `;
+  }
+  if (c.originalPrice){
+    return `
+      <span class="price-tag"><span class="price-was">$${c.originalPrice}</span> $${c.price}</span>
+      <a class="btn btn-primary" href="#/signup?course=${c.slug}">Reserve a seat</a>
+    `;
+  }
+  return `
+    <span class="price-tag">$${c.price}</span>
+    <a class="btn btn-primary" href="#/signup?course=${c.slug}">Reserve a seat</a>
+  `;
+}
+
+function sessionNote(){
+  return `<p class="session-note">Don't see a session that works for you? <a href="${SESSION_REQUEST_CONTACT}">Write to us</a> — we'll add new sessions that suit you.</p>`;
+}
+
+function renderHome(){
+  const events = upcomingEvents().slice(0, 3);
+  app.innerHTML = `
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line">AI coding for developers and enterprises</div>
+        <h1 class="wide">Train your developers. Roll out AI coding to your whole organization.</h1>
+        <p class="lede">yogine.dev runs hands-on training for developers and builds solutions for enterprises: hardened skills and agents, and a governance framework covering security, compliance and LLM cost.</p>
+      </div>
+      <div class="paths">
+        <a class="path-card" href="#/training">
+          <div class="path-audience">For developers and teams</div>
+          <h2>Training</h2>
+          <p>Hands-on workshops on your own repo, from a free 90-minute Foundation session to advanced techniques and enterprise programs.</p>
+          <span class="path-go">Explore training</span>
+        </a>
+        <a class="path-card" href="#/solutions">
+          <div class="path-audience">For engineering organizations</div>
+          <h2>Solutions</h2>
+          <p>Hardened skills and agents, plus a governance framework for security, compliance and LLM cost.</p>
+          <span class="path-go">Explore solutions</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Training</h2>
+          <p class="desc">Start with the free 90-minute Foundation session, then go hands-on with your own repo.</p>
+        </div>
+        <a href="#/training" class="btn btn-ghost">All training details</a>
+      </div>
+      <div class="course-list">
+        ${COURSES.map((c, i) => courseRow(c, i, 3)).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Next few sessions</h2>
+          <p class="desc">Dates, format, and where each cohort meets.</p>
+        </div>
+        <a href="#/events" class="btn btn-ghost">Full schedule</a>
+      </div>
+      ${events.length
+        ? `<div class="event-table">${events.map(renderEventRow).join('')}</div>`
+        : `<p class="session-note">No sessions are scheduled right now.</p>`}
+      ${sessionNote()}
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Solutions for enterprises</h2>
+          <p class="desc">Roll out AI coding agents and skills across your engineering organization, with the guardrails built in.</p>
+        </div>
+        <a href="#/solutions" class="btn btn-ghost">How it works</a>
+      </div>
+      <div class="cols-3">
+        <div>
+          <h3>Hardened skills and agents</h3>
+          <p>A shared, reviewed and versioned library built for your codebase and conventions.</p>
+        </div>
+        <div>
+          <h3>Security and compliance</h3>
+          <p>Access control, vetting, review policy and audit trails for every skill, agent and connection.</p>
+        </div>
+        <div>
+          <h3>LLM FinOps</h3>
+          <p>Visibility into LLM spend across the organization, with controls and optimization.</p>
+        </div>
+      </div>
+      <p style="margin-top:32px;"><a class="btn btn-primary" href="${SOLUTIONS_CONTACT}">Talk to us</a></p>
+    </div>
+  </section>
+  `;
+}
+
+const AGENDA = [
+  ['How AI coding evolved', 'From one-off prompts, to agents that work in multiple steps, to skills you package once and reuse.'],
+  ['What a skill is', 'Scope, trigger conditions, examples and expected output — plus a live demo of the same task with and without a skill.'],
+  ['Environment setup', 'Install and connect your tools to a real project of your own, and run one task before moving on.'],
+  ['Hands-on: use skills on real work', 'Pick a task from your repo, apply a skill, adjust it when it doesn\'t quite fit, and compare against a raw prompt.'],
+  ['Finding skills and MCP servers', 'Where to look, how to vet before you install, and how to connect an MCP server and use it in a real task.'],
+  ['Writing your own', 'Enough to outline the scope and triggers for a task you repeat, so you know authoring is approachable.'],
+  ['Governance preview', 'Code review, access control and audit trails — what changes when agent use grows past one person.']
+];
+
+function renderTraining(){
+  app.innerHTML = `
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line">Training · hands-on workshops for working developers</div>
+        <h1>Skip the tutorials. Ship like you've already got a team behind you.</h1>
+        <p class="lede">Racing to an MVP? Moving from writing code to directing agents? Sizing up what agentic coding means for your team? Bring your laptop with your dev environment set up and learn hands-on. Walk away Monday-ready with a pack of professional-grade skills and agents installed, and 2 months of support after.</p>
+        <div class="hero-actions">
+          <a href="#/events" class="btn btn-primary">See upcoming sessions</a>
+        </div>
+      </div>
+      <div class="term-window">
+        <div class="term-bar">
+          <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+          <span class="term-title">same task, two ways</span>
+        </div>
+        <div class="term-body">
+          <div class="term-col-label">// raw prompting</div>
+          <div class="term-row bad"><span class="mark" aria-hidden="true">✕</span><span>Re-explain context every session</span></div>
+          <div class="term-row bad"><span class="mark" aria-hidden="true">✕</span><span>Output quality varies run to run</span></div>
+          <div class="term-row bad"><span class="mark" aria-hidden="true">✕</span><span>Easy to forget a constraint</span></div>
+          <div class="term-divider"></div>
+          <div class="term-col-label">// using a skill</div>
+          <div class="term-row good"><span class="mark" aria-hidden="true">✓</span><span>Context packaged once, reused</span></div>
+          <div class="term-row good"><span class="mark" aria-hidden="true">✓</span><span>Consistent quality, every run</span></div>
+          <div class="term-row good"><span class="mark" aria-hidden="true">✓</span><span>Faster the more you repeat it</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stat-strip">
+    <div class="wrap">
+      <span><strong>4</strong> training levels</span>
+      <span><strong>Free</strong> 90-min Foundation</span>
+      <span><strong>7 hrs</strong> hands-on per full workshop</span>
+      <span>bring <strong>your laptop</strong>, dev env ready</span>
+      <span>small, <strong>hands-on</strong> cohorts</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Courses</h2>
+          <p class="desc">The full workshops are hands-on and built around a real codebase — yours. Not sure yet? The free Foundation session is a 90-minute first look.</p>
+        </div>
+      </div>
+      <div class="course-list">
+        ${COURSES.map((c, i) => courseRow(c, i, 0)).join('')}
+      </div>
+      <p class="session-note">Training a whole team, or rolling AI coding out across your organization? See <a href="#/solutions">Solutions</a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>A Professional workshop, start to finish</h2>
+          <p class="desc">The order we work through it, ending with skills installed and tested on your machine.</p>
+        </div>
+      </div>
+      <ol class="agenda">
+        ${AGENDA.map((a, i) => `
+          <li>
+            <span class="course-index">0${i + 1}</span>
+            <div><h3>${a[0]}</h3><p>${a[1]}</p></div>
+          </li>`).join('')}
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div>
+        <h2 style="font-size:1.5rem;">Before a full workshop</h2>
+        <ul class="course-bullets">
+          <li>A laptop with your normal development environment set up.</li>
+          <li>VS Code or Cursor installed.</li>
+          <li>A model connected — Claude or GPT.</li>
+          <li>A repo of your own to work on.</li>
+        </ul>
+      </div>
+      <div class="faq">
+        <h2 style="font-size:1.5rem;">Questions</h2>
+        <details>
+          <summary>Where should I start?</summary>
+          <p>New to AI-assisted coding and want a first look? Join the free 90-minute Foundation session. Ready to work on your own repo? Reserve a seat in the Professional workshop.</p>
+        </details>
+        <details>
+          <summary>Who is the Professional course for?</summary>
+          <p>${courseBySlug('professional').audience}</p>
+        </details>
+        <details>
+          <summary>What happens after I pay?</summary>
+          <p>Stripe emails you a payment receipt. We then email you your session details and a short prep checklist.</p>
+        </details>
+        <details>
+          <summary>What if my plans change?</summary>
+          <p>Moving to another session is free. Cancel 72 or more hours ahead for a full refund. The details are in our <a href="#/refund-policy">Refund &amp; Cancellation Policy</a>.</p>
+        </details>
+        <details>
+          <summary>What does the 2 months of support include?</summary>
+          <p>You can send us questions after the workshop as you put what you learned to work. It's virtual and included in the course price.</p>
+        </details>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderSolutions(){
+  app.innerHTML = `
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow-line">Solutions for engineering organizations</div>
+      <h1 class="wide">Roll out AI coding across your organization, with the guardrails built in.</h1>
+      <p class="lede" style="max-width:58ch;">We help engineering organizations adopt AI coding agents and skills at scale: hardened skills and agents your teams can trust, and a governance framework covering security, compliance and LLM cost.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="${SOLUTIONS_CONTACT}">Talk to us</a>
+        <a class="btn btn-ghost" href="#/training">Training for developers</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>What goes wrong when adoption outpaces oversight</h2>
+          <p class="desc">AI coding usually starts with individual developers. Without shared standards, three problems show up quickly, and a fourth on the bill.</p>
+        </div>
+      </div>
+      <div class="risk-grid">
+        <div>
+          <h3>Shadow tooling</h3>
+          <p>Skills and agents spread from person to person, with no visibility for security or engineering leads.</p>
+        </div>
+        <div>
+          <h3>Unreviewed connections</h3>
+          <p>Agents gain reach into real systems through MCP servers that nobody signed off.</p>
+        </div>
+        <div>
+          <h3>Inconsistent quality</h3>
+          <p>The same job produces different results depending on whose skill ran it.</p>
+        </div>
+        <div>
+          <h3>Unmanaged LLM spend</h3>
+          <p>Usage grows with adoption, and nobody can see or control what it costs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div>
+        <h2 style="font-size:1.9rem;">Hardened skills and agents</h2>
+        <p style="color:var(--paper-dim);">A shared library built for your codebase and conventions, reviewed before anyone uses it and versioned so every team works from the same standard.</p>
+      </div>
+      <ul class="course-bullets">
+        <li>Built around repeatable work: code review standards, test generation, documentation and codebase onboarding.</li>
+        <li>Each skill has a defined scope, trigger conditions, examples and expected output, so it behaves the same way on every run.</li>
+        <li>Reviewed and versioned before release, with changes going through the same review as code.</li>
+        <li>MCP connections to your ticketing, docs and internal tools, vetted and approved before any agent can reach them.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Governance framework</h2>
+          <p class="desc">Who may build, publish and run skills and agents, against which systems, and at what cost: written down, enforced and auditable.</p>
+        </div>
+      </div>
+      <div class="cols-3">
+        <div>
+          <h3>Security</h3>
+          <ul class="course-bullets">
+            <li>Who can build, publish and run skills and agents, and against which systems.</li>
+            <li>Access tiers by role, with each skill and agent limited to the access its task needs.</li>
+            <li>Vetting before any skill or MCP server is installed.</li>
+            <li>Human review before merge, including AI-written code.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Compliance</h3>
+          <ul class="course-bullets">
+            <li>Code review policy applied to AI-assisted work.</li>
+            <li>Audit trails showing who ran what, through which skill, against which system.</li>
+            <li>Standards and templates enforced, so every team's skills meet the same bar before they ship.</li>
+            <li>Policy checks that move from manual review toward automation.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>LLM FinOps</h3>
+          <ul class="course-bullets">
+            <li>Cost monitoring across teams and the organization as a whole.</li>
+            <li>Controls to keep LLM spend within budget as adoption grows.</li>
+            <li>Optimization through model choice, context management and, where it makes sense, hosting your own LLM.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Where you are today</h2>
+          <p class="desc">Most organizations start at Crawl, whether they plan to or not. We help you find your level and move up.</p>
+        </div>
+      </div>
+      <div class="cols-3">
+        <div>
+          <h3>Crawl</h3>
+          <ul class="course-bullets">
+            <li>Individual, ad hoc use.</li>
+            <li>No shared skill library.</li>
+            <li>Skills live on personal laptops.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Walk</h3>
+          <ul class="course-bullets">
+            <li>A shared skill library.</li>
+            <li>Basic vetting before install.</li>
+            <li>Access tiers by role.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Run</h3>
+          <ul class="course-bullets">
+            <li>Versioned, reviewed skills.</li>
+            <li>Audit trails on every run.</li>
+            <li>Automated policy enforcement.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>How we work with you</h2>
+          <p class="desc">Scoped to your stack, your maturity level and your goals.</p>
+        </div>
+      </div>
+      <ol class="agenda">
+        <li>
+          <span class="course-index">01</span>
+          <div><h3>Assess</h3><p>Find where you are on the curve: which skills, agents and MCP connections are in use today, who owns them, and what they cost.</p></div>
+        </li>
+        <li>
+          <span class="course-index">02</span>
+          <div><h3>Build and pilot</h3><p>Stand up the skills, agents and guardrails with one team, scoped to your stack and standards.</p></div>
+        </li>
+        <li>
+          <span class="course-index">03</span>
+          <div><h3>Roll out</h3><p>Extend to every team, train the people using it, and hand over a framework your organization can run itself.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="wrap">
+      <div>
+        <h2>Tell us where you are today.</h2>
+        <p>Share a few lines about your engineering organization and what you want to solve, and we'll come back to you.</p>
+      </div>
+      <a class="btn btn-primary" href="${SOLUTIONS_CONTACT}">Talk to us</a>
+    </div>
+  </div>
+
+  <section style="padding-top:36px;">
+    <div class="wrap">
+      <p class="session-note" style="margin:0;">Only need your team trained? See <a href="#/training">Training</a>. Team and bulk bookings can be arranged.</p>
+    </div>
+  </section>
+  `;
+}
+
+function renderEventRow(ev){
+  const course = courseBySlug(ev.courseSlug);
+  const address = eventAddress(ev);
+  return `
+    <div class="event-row">
+      <div>
+        <div class="event-course">${course.name}</div>
+        <div class="event-loc">${eventLocation(ev)}${ev.venue && ev.venue.url ? ` · <a href="${ev.venue.url}" target="_blank" rel="noopener noreferrer" class="venue-link">visit site<span class="visually-hidden"> (opens in a new tab)</span> ↗</a>` : ''}</div>
+        ${address ? `<div class="event-address">${address}</div>` : ''}
+      </div>
+      <div class="event-date">${ev.date}</div>
+      <div class="event-loc">${course.level}</div>
+      <a class="btn btn-ghost" href="#/signup?course=${ev.courseSlug}&event=${ev.id}">Reserve a seat</a>
+    </div>`;
+}
+
+function renderEvents(){
+  const events = upcomingEvents();
+  app.innerHTML = `
+  <section style="padding-top:52px;">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Upcoming sessions</h2>
+          <p class="desc">In-person sessions run at India Community Center (ICC) in Milpitas, CA — plus a virtual option for Professional.</p>
+        </div>
+      </div>
+      ${events.length
+        ? `<div class="event-table">${events.map(renderEventRow).join('')}</div>`
+        : `<p class="session-note">No sessions are scheduled right now.</p>`}
+      ${sessionNote()}
+    </div>
+  </section>`;
+}
+
+/* ---- Signup step 1: your details ---- */
+function renderSignupStep1(params){
+  // A course/session deep-link (from a "Reserve a seat" button) is remembered
+  // so it's already selected by step 2. Anything unrecognised is ignored.
+  const c = courseBySlug(params.get('course'));
+  if (c && !c.custom) wizard.courseSlug = c.slug;
+  if (eventById(params.get('event'))) wizard.eventId = params.get('event');
+  saveWizard();
+
+  app.innerHTML = `
+  <div class="form-page wrap">
+    ${stepsBar(1)}
+    <div class="form-card">
+      <h2>Tell us about you</h2>
+      <p style="color:var(--paper-dim); margin-bottom:28px;">This helps facilitators pace the room and pair people well.</p>
+
+      <div class="field-row">
+        <div class="field" id="f-name">
+          <label for="name">Full name</label>
+          <input id="name" type="text" autocomplete="name" value="${esc(wizard.name)}" placeholder="Jordan Rivera" aria-describedby="err-name">
+          <div class="field-error" id="err-name">Enter your name.</div>
+        </div>
+        <div class="field" id="f-email">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" value="${esc(wizard.email)}" placeholder="jordan@company.com" aria-describedby="err-email">
+          <div class="field-error" id="err-email">Enter a valid email address — your confirmation is sent there.</div>
+        </div>
+      </div>
+
+      <div class="field" id="f-phone">
+        <label for="phone">Phone <span class="optional-tag">(optional)</span></label>
+        <input id="phone" type="tel" autocomplete="tel" value="${esc(wizard.phone)}" placeholder="(555) 010-0199" aria-describedby="err-phone">
+        <div class="field-error" id="err-phone">Enter a valid phone number, or leave it blank.</div>
+      </div>
+
+      <div class="field-row">
+        <div class="field" id="f-coding">
+          <label for="codingExp">Current coding experience <span class="optional-tag">(optional)</span></label>
+          <select id="codingExp">
+            <option value="">Select one</option>
+            <option value="<1" ${wizard.codingExp==='<1'?'selected':''}>Less than 1 year</option>
+            <option value="1-3" ${wizard.codingExp==='1-3'?'selected':''}>1–3 years</option>
+            <option value="3-7" ${wizard.codingExp==='3-7'?'selected':''}>3–7 years</option>
+            <option value="7+" ${wizard.codingExp==='7+'?'selected':''}>7+ years</option>
+          </select>
+        </div>
+        <div class="field" id="f-ai">
+          <label for="aiExp">Current experience with AI coding tools <span class="optional-tag">(optional)</span></label>
+          <select id="aiExp">
+            <option value="">Select one</option>
+            <option value="none" ${wizard.aiExp==='none'?'selected':''}>None yet</option>
+            <option value="autocomplete" ${wizard.aiExp==='autocomplete'?'selected':''}>Autocomplete only</option>
+            <option value="chat" ${wizard.aiExp==='chat'?'selected':''}>Chat assistant for questions</option>
+            <option value="agentic" ${wizard.aiExp==='agentic'?'selected':''}>Agentic / agent mode regularly</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field" id="f-expect">
+        <label for="expectations">What are you hoping to leave with? <span class="optional-tag">(optional)</span></label>
+        <textarea id="expectations" placeholder="e.g. a working skill for our code review checklist">${esc(wizard.expectations)}</textarea>
+      </div>
+
+      <p class="form-note">When you continue, we save these details so we can follow up if you don't finish registering. See our <a href="#/privacy">privacy notice</a>.</p>
+
+      <div class="form-actions">
+        <span></span>
+        <button class="btn btn-primary" id="toStep2">Continue</button>
+      </div>
+    </div>
+  </div>`;
+
+  document.getElementById('toStep2').addEventListener('click', () => {
+    wizard.name = document.getElementById('name').value.trim();
+    wizard.phone = document.getElementById('phone').value.trim();
+    wizard.email = document.getElementById('email').value.trim();
+    wizard.codingExp = document.getElementById('codingExp').value;
+    wizard.aiExp = document.getElementById('aiExp').value;
+    wizard.expectations = document.getElementById('expectations').value.trim();
+
+    const nameOk = wizard.name.length > 1;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(wizard.email);
+    const phoneOk = !wizard.phone || wizard.phone.replace(/\D/g, '').length >= 7;
+
+    let firstBad = null;
+    [['f-name', 'name', nameOk], ['f-email', 'email', emailOk], ['f-phone', 'phone', phoneOk]].forEach(([fieldId, inputId, ok]) => {
+      document.getElementById(fieldId).classList.toggle('invalid', !ok);
+      const input = document.getElementById(inputId);
+      input.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      if (!ok && !firstBad) firstBad = input;
+    });
+    if (firstBad){ firstBad.focus(); return; }
+
+    saveWizard();
+    captureLead();
+    navigate('/signup/course');
+  });
+}
+
+/* ---- Signup step 2: course + session ---- */
+function renderSignupStep2(params){
+  if (!wizard.name || !wizard.email) return navigate('/signup');
+
+  const bookable = COURSES.filter(c => !c.custom); // Enterprise isn't self-serve
+  const defaultSlug = bookable.find(c => c.slug === 'professional') ? 'professional' : bookable[0].slug;
+  let preCourse = params.get('course') || wizard.courseSlug || defaultSlug;
+  if (!bookable.find(c => c.slug === preCourse)) preCourse = defaultSlug;
+  const preEvent = params.get('event') || wizard.eventId || '';
+  wizard.courseSlug = preCourse;
+
+  app.innerHTML = `
+  <div class="form-page wrap">
+    ${stepsBar(2)}
+    <div class="form-card">
+      <h2>Choose your course and session</h2>
+      <p style="color:var(--paper-dim); margin-bottom:28px;">You can change either selection any time before payment.</p>
+
+      <div class="field">
+        <label for="courseSelect">Course</label>
+        <select id="courseSelect">
+          ${bookable.map(c => `<option value="${c.slug}" ${c.slug === preCourse ? 'selected' : ''}>${c.name} — ${c.free ? 'Free' : '$' + c.price}</option>`).join('')}
+        </select>
+      </div>
+
+      <fieldset class="field">
+        <legend>Session</legend>
+        <div id="sessionList"></div>
+      </fieldset>
+
+      <div class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" id="website" tabindex="-1" autocomplete="off"></label></div>
+      <p class="form-error" id="regError" role="alert" hidden></p>
+
+      <div class="form-actions">
+        <button class="btn btn-ghost" id="backStep1">Back</button>
+        <button class="btn btn-primary" id="toStep3">Continue to payment</button>
+      </div>
+    </div>
+  </div>`;
+
+  const continueBtn = document.getElementById('toStep3');
+  const selectedIsFree = () => { const c = courseBySlug(wizard.courseSlug); return !!(c && c.free); };
+  const refreshContinueLabel = () => { continueBtn.textContent = selectedIsFree() ? 'Complete registration' : 'Continue to payment'; };
+
+  function paintSessions(slug, selectedEventId){
+    const list = upcomingEventsFor(slug);
+    const box = document.getElementById('sessionList');
+    continueBtn.disabled = list.length === 0;
+    if (!list.length){
+      box.innerHTML = `<p class="session-note" style="margin:0;">No upcoming sessions for this course right now. <a href="${SESSION_REQUEST_CONTACT}">Write to us</a> and we'll add one.</p>`;
+      return;
+    }
+    box.innerHTML = list.map(ev => `
+      <label class="session-pick ${ev.id === selectedEventId ? 'selected' : ''}" data-event="${ev.id}">
+        <span>
+          <strong style="font-family:'IBM Plex Mono',monospace; font-size:.85rem;">${ev.date}</strong><br>
+          <span style="color:var(--paper-dim); font-size:.85rem;">${eventLocation(ev)}</span>
+        </span>
+        <input type="radio" name="session" value="${ev.id}" ${ev.id === selectedEventId ? 'checked' : ''}>
+      </label>
+    `).join('');
+    box.querySelectorAll('input[name="session"]').forEach(input => {
+      input.addEventListener('change', () => {
+        box.querySelectorAll('.session-pick').forEach(el => el.classList.toggle('selected', el.dataset.event === input.value));
+        wizard.eventId = input.value;
+        saveWizard();
+      });
+    });
+  }
+
+  const sessions = upcomingEventsFor(preCourse);
+  const initialEvent = sessions.find(s => s.id === preEvent) ? preEvent : (sessions[0] ? sessions[0].id : '');
+  wizard.eventId = initialEvent;
+  saveWizard();
+  paintSessions(preCourse, initialEvent);
+  refreshContinueLabel();
+
+  document.getElementById('courseSelect').addEventListener('change', (e) => {
+    wizard.courseSlug = e.target.value;
+    const list = upcomingEventsFor(e.target.value);
+    wizard.eventId = list[0] ? list[0].id : '';
+    saveWizard();
+    paintSessions(e.target.value, wizard.eventId);
+    refreshContinueLabel();
+  });
+
+  document.getElementById('backStep1').addEventListener('click', () => navigate('/signup'));
+  continueBtn.addEventListener('click', () => {
+    if (!wizard.eventId) return;
+    saveWizard();
+    if (selectedIsFree()) submitFreeRegistration(continueBtn);
+    else navigate('/signup/payment');
+  });
+}
+
+/* ---- Free sessions: register directly, no payment step ---- */
+function submitFreeRegistration(button){
+  const course = courseBySlug(wizard.courseSlug);
+  const ev = eventById(wizard.eventId);
+  const errorBox = document.getElementById('regError');
+  errorBox.hidden = true;
+  button.disabled = true;
+  button.textContent = 'Registering…';
+
+  const payload = {
+    name: wizard.name, email: wizard.email, phone: wizard.phone,
+    codingExperience: wizard.codingExp, aiExperience: wizard.aiExp, expectations: wizard.expectations,
+    course: course.slug, event: ev.id,
+    website: document.getElementById('website').value // honeypot: real visitors leave it empty
+  };
+
+  fetch(REGISTER_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+    .then(res => res.json().catch(() => ({})).then(data => {
+      if (!res.ok || !data.ok) throw new Error(data.error || 'Registration failed');
+      navigate('/registered?type=free');
+    }))
+    .catch(() => {
+      errorBox.textContent = "We couldn't complete your registration. Please try again, or email hello@yogine.dev and we'll register you.";
+      errorBox.hidden = false;
+      button.disabled = false;
+      button.textContent = 'Complete registration';
+    });
+}
+
+/* ---- Signup step 3: hand off to Stripe ---- */
+function renderSignupStep3(){
+  if (!wizard.name || !wizard.email) return navigate('/signup');
+  const course = wizard.courseSlug ? courseBySlug(wizard.courseSlug) : null;
+  if (!course || course.custom || course.free) return navigate('/signup/course');
+  const ev = eventById(wizard.eventId);
+  const payUrl = stripeLinkFor(course.slug, { prefillEmail: true });
+  const qrUrl = stripeLinkFor(course.slug); // no personal data
+
+  const payBlock = payUrl ? `
+      <div class="stripe-callout">
+        <div class="stripe-badge">🔒 Secure checkout by <strong class="stripe-mention">Stripe</strong></div>
+        <p class="wallet-note">You'll be redirected to <strong class="stripe-mention">Stripe</strong>'s own secure payment page to complete this — card, Apple Pay, Google Pay, PayPal, and Venmo are all offered there, not on this site, so you're never entering payment details on a domain you don't already trust.</p>
+        <button class="btn btn-stripe wallet-btn" id="payCard">Continue to <strong>Stripe</strong></button>
+        <div class="card-icons" style="margin-top:12px;">VISA · MASTERCARD · AMEX · PAYPAL · VENMO</div>
+
+        <div class="pay-divider">or scan to pay from your phone</div>
+        <div class="qr-box">
+          <img src="${qrImageSrc(qrUrl)}" alt="QR code linking to the secure Stripe payment page" loading="lazy">
+          <span class="qr-caption">Opens the same Stripe payment page</span>
+        </div>
+      </div>
+      <p class="disclaimer">Payment happens on Stripe's hosted page. We never see or store your card details.</p>
+  ` : `
+      <div class="stripe-callout">
+        <p class="wallet-note" style="margin:0;">Online payment isn't open for this course yet. <a href="mailto:hello@yogine.dev?subject=Reserve%20a%20seat%3A%20${encodeURIComponent(course.name)}" style="color:var(--amber);">Email us</a> and we'll reserve your seat and send payment details.</p>
+      </div>
+  `;
+
+  app.innerHTML = `
+  <div class="form-page wrap">
+    ${stepsBar(3)}
+    <div class="form-card">
+      <h2>Payment</h2>
+
+      <div class="summary-box">
+        <div class="summary-row"><span>${course.name}</span><span>$${course.price}</span></div>
+        <div class="summary-row"><span>Session</span><span>${ev ? ev.date + ' · ' + eventLocation(ev) : 'To be confirmed'}</span></div>
+        <div class="summary-row"><span>Attendee</span><span>${esc(wizard.name)}</span></div>
+        <div class="summary-row"><span>Total due today</span><span>$${course.price}</span></div>
+      </div>
+
+      ${payBlock}
+
+      <p style="font-size:.85rem; color:var(--paper-dim); margin-top:14px;">Read our <a href="#/refund-policy" style="color:var(--amber);">Refund &amp; Cancellation Policy</a> before you pay.</p>
+
+      <div class="form-actions">
+        <button class="btn btn-ghost" id="backStep2">Back</button>
+      </div>
+    </div>
+  </div>`;
+
+  document.getElementById('backStep2').addEventListener('click', () => navigate('/signup/course'));
+
+  const payButton = document.getElementById('payCard');
+  if (payButton){
+    payButton.addEventListener('click', (e) => {
+      const button = e.currentTarget;
+      button.disabled = true;
+      button.innerHTML = '<span class="processing"><span class="spinner"></span>Redirecting to Stripe…</span>';
+      window.location.href = payUrl;
+    });
+  }
+}
+
+/* ---- After registering: Stripe's "after payment" redirect and the free
+   sign-up flow both land here ---- */
+function renderRegistered(params){
+  const free = !!params && params.get('type') === 'free';
+  const course = wizard.courseSlug ? courseBySlug(wizard.courseSlug) : null;
+  const ev = wizard.eventId ? eventById(wizard.eventId) : null;
+  const message = free
+    ? `We've emailed your confirmation. Nothing after a few minutes? Check your spam folder, then write to <a href="mailto:hello@yogine.dev" style="color:var(--amber);">hello@yogine.dev</a>.`
+    : `Stripe is emailing your payment receipt. We'll follow up by email with your session details and a short prep checklist. Nothing after a while? Check your spam folder, then write to <a href="mailto:hello@yogine.dev" style="color:var(--amber);">hello@yogine.dev</a>.`;
+  app.innerHTML = `
+  <div class="form-page wrap">
+    <div class="confirm-box">
+      <div class="confirm-mark">✓ ${free ? "you're registered" : 'thank you'}</div>
+      <h2>${free ? 'See you there.' : 'Watch your inbox.'}</h2>
+      <p style="margin:0 auto 24px;">${message}</p>
+      ${course ? `
+      <div class="summary-box" style="text-align:left;">
+        <div class="summary-row"><span>Course</span><span>${course.name}</span></div>
+        <div class="summary-row"><span>Session</span><span>${ev ? ev.date + ' · ' + eventLocation(ev) : 'To be confirmed'}</span></div>
+      </div>` : ''}
+      <a href="#/events" class="btn btn-ghost">Back to schedule</a>
+    </div>
+  </div>`;
+  clearWizard();
+}
+
+function renderRefundPolicy(){
+  app.innerHTML = `
+  <div class="form-page wrap">
+    <div class="form-card" style="max-width:720px;">
+      <h2>Refund &amp; Cancellation Policy</h2>
+      <p style="color:var(--paper-dim); margin-bottom:32px;">Last updated: September 2026</p>
+
+      <p>We want signing up to feel low-risk. Here's exactly what happens if your plans change.</p>
+
+      <h3 style="font-size:1.05rem; margin-top:32px;">Professional and Advanced courses</h3>
+      <ul class="policy-list">
+        <li><strong>72 or more hours before your session:</strong> full refund, no questions asked.</li>
+        <li><strong>24–71 hours before your session:</strong> 50% refund, or a full credit toward any future session of the same or a different course.</li>
+        <li><strong>Can't make it within 24 hours, or missed the session?</strong> No problem — just let us know and we'll move you to the next available cohort, free of charge.</li>
+      </ul>
+
+      <h3 style="font-size:1.05rem; margin-top:28px;">Free sessions</h3>
+      <p>There's nothing to refund. If you can't make it, email us so we can release your seat.</p>
+
+      <h3 style="font-size:1.05rem; margin-top:28px;">Rescheduling</h3>
+      <p>Need a different date instead of a refund? Just ask — moving to another upcoming session of the same course is always free, even if it's last-minute, subject to seats being available.</p>
+
+      <h3 style="font-size:1.05rem; margin-top:28px;">Virtual support window</h3>
+      <p>The 2 months of virtual support included with your course is part of the training itself and isn't separately refundable once your session has taken place.</p>
+
+      <h3 style="font-size:1.05rem; margin-top:28px;">Enterprise training and Solutions engagements</h3>
+      <p>Refund and cancellation terms for enterprise training and Solutions engagements are set out in your individual agreement with us, since scope and timelines are negotiated per organization.</p>
+
+      <h3 style="font-size:1.05rem; margin-top:28px;">How to request a refund or reschedule</h3>
+      <p>Email <a href="mailto:hello@yogine.dev?subject=Refund%20or%20reschedule%20request" style="color:var(--amber);">hello@yogine.dev</a> with your name and the session you registered for. Approved refunds are returned to your original payment method and typically take 5–10 business days to appear, depending on your bank or card issuer.</p>
+
+      <p style="margin-top:28px;">This policy applies to bookings made directly through yogine.dev. Team or bulk bookings arranged separately may have different terms specified in writing at the time of booking.</p>
+
+      <div class="form-actions" style="justify-content:flex-start; margin-top:36px;">
+        <a href="#/" class="btn btn-ghost">Back to home</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderPrivacy(){
+  app.innerHTML = `
+  <div class="form-page wrap">
+    <div class="form-card" style="max-width:720px;">
+      <h2>Privacy notice</h2>
+      <p style="color:var(--paper-dim); margin-bottom:32px;">Last updated: September 2026</p>
+
+      <p>This explains what yogine.dev collects when you register for a workshop, and why.</p>
+
+      <h3 style="font-size:1.05rem; margin-top:32px;">What we collect</h3>
+      <p>Your name and email, and optionally your phone number, your coding and AI-tool experience, and what you hope to leave with. We also record which course and session you chose. We save these when you continue past the "Your details" step, even if you don't go on to pay. For free sessions we also keep your registration on our web host so we can confirm your seat. If you write to us about Solutions, we keep the email thread so we can reply.</p>
+
+      <h3 style="font-size:1.05rem; margin-top:28px;">Why we collect it</h3>
+      <p>To register you, send your confirmation and session details, prepare the workshop for the people in the room, follow up if you started but didn't finish registering, and support you after the workshop.</p>
+
+      <h3 style="font-size:1.05rem; margin-top:28px;">Who else handles it</h3>
+      <ul class="policy-list">
+        <li><strong>Google</strong> stores your registration details (in Google Sheets, via Apps Script) and serves this site's fonts, which means your IP address is sent to Google when a page loads.</li>
+        <li><strong>Stripe</strong> processes payments on its own hosted page. We never see or store your card details. Stripe's privacy policy applies to what you enter there.</li>
+        <li><strong>Hostinger</strong> hosts this site and stores free-session registrations.</li>
+        <li><strong>Resend</strong> delivers our confirmation emails, so it receives your name, email address and the session you chose.</li>
+        <li><strong>api.qrserver.com</strong> draws the payment QR code. It receives only the payment-page link, never your name or email.</li>
+      </ul>
+
+      <h3 style="font-size:1.05rem; margin-top:28px;">How long we keep it</h3>
+      <p>Only as long as we need it to run your workshop and its support period, or to follow up on an unfinished registration. We don't sell your information.</p>
+
+      <h3 style="font-size:1.05rem; margin-top:28px;">Your choices</h3>
+      <p>To see, correct, or delete what we hold about you, email <a href="mailto:hello@yogine.dev?subject=Privacy%20request" style="color:var(--amber);">hello@yogine.dev</a>.</p>
+
+      <div class="form-actions" style="justify-content:flex-start; margin-top:36px;">
+        <a href="#/" class="btn btn-ghost">Back to home</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function stepsBar(active){
+  const labels = ['Your details', 'Course & session', 'Payment'];
+  return `<div class="steps" role="list" aria-label="Registration steps">
+    ${labels.map((l, i) => {
+      const n = i + 1;
+      const cls = n === active ? 'active' : (n < active ? 'done' : '');
+      return `<div class="step ${cls}" role="listitem"${n === active ? ' aria-current="step"' : ''}><span class="num">0${n}</span>${l.replace('&', '&amp;')}</div>`;
+    }).join('')}
+  </div>`;
+}
+
+</script>
+</body>
+</html>
