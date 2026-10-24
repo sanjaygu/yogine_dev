@@ -1,0 +1,60 @@
+---
+import { upcoming, courseBySlug, sessionLocation, sessionAddress, mapUrl, hasCalendar } from '../lib/catalog.js';
+
+const { limit = 0, emptyHeading = 'h3' } = Astro.props;
+const EmptyHeading = emptyHeading;
+const all = upcoming();
+const sessions = limit ? all.slice(0, limit) : all;
+---
+<div data-session-group>
+  <div class="event-table" data-session-list hidden={sessions.length === 0}>
+    {sessions.map((s) => {
+      const c = courseBySlug(s.course);
+      const address = sessionAddress(s);
+      return (
+        <div class="event-row" data-session-end={s.end}>
+          <div>
+            <div class="event-course">{c.name}</div>
+            <div class="event-loc">
+              {sessionLocation(s)}
+              {s.venue?.url && (
+                <>
+                  {' · '}
+                  <a href={s.venue.url} target="_blank" rel="noopener noreferrer" class="venue-link">
+                    venue site<span class="visually-hidden"> (opens in a new tab)</span>
+                  </a>
+                </>
+              )}
+            </div>
+            {address && <div class="event-address">{address}</div>}
+            <div class="event-links">
+              {hasCalendar(s) && (
+                <a href={`/calendar/${s.id}.ics`} download>
+                  Add to calendar<span class="visually-hidden"> — {c.name}, {s.date}</span>
+                </a>
+              )}
+              {s.venue && (
+                <a href={mapUrl(s)} target="_blank" rel="noopener noreferrer">
+                  Map<span class="visually-hidden"> to {s.venue.name} (opens in a new tab)</span>
+                </a>
+              )}
+            </div>
+          </div>
+          <div class="event-date">{s.date}</div>
+          <div class="event-loc">{c.level}</div>
+          <a class="btn btn-ghost btn-sm" href={`/enroll/?course=${s.course}&session=${s.id}`}>
+            Reserve a seat<span class="visually-hidden"> — {c.name}, {s.date}</span>
+          </a>
+        </div>
+      );
+    })}
+  </div>
+  <div class="empty-state" data-session-empty hidden={sessions.length > 0}>
+    <EmptyHeading>No sessions are scheduled right now</EmptyHeading>
+    <p>Tell us which course you want and how to reach you, and we will let you know when a date is published.</p>
+    <a class="btn btn-primary" href="/waitlist/">Notify me when scheduled</a>
+  </div>
+</div>
+<p class="session-note">
+  Don't see a session that works for you? <a href="/contact/">Write to us</a> — we'll add new sessions that suit you.
+</p>

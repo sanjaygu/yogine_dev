@@ -1,0 +1,8 @@
+# Real secrets and server-created data never go in git
+public_html/api/config.php
+public_html/api/*.csv
+public_html/api/*.log
+public_html/api/sent-sessions.txt
+
+.env
+.DS_Store

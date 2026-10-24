@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import CourseRow from '../components/CourseRow.astro';
+import SessionList from '../components/SessionList.astro';
+import { COURSES } from '../lib/catalog.js';
+---
+<Base path="/">
+  <Fragment slot="head">
+    <script is:inline>
+      // Old single-page links (#/training, Stripe's #/registered or ?registered=1) go to the matching page.
+      (function () {
+        var routes = {
+          '/training': '/training/', '/courses': '/training/', '/solutions': '/solutions/', '/events': '/sessions/',
+          '/signup': '/enroll/', '/signup/course': '/enroll/', '/signup/payment': '/enroll/',
+          '/registered': '/thanks/', '/refund-policy': '/refund-policy/', '/privacy': '/privacy/'
+        };
+        var hash = location.hash.replace(/^#/, '');
+        var target = null;
+        if (hash) target = routes[hash.split('?')[0]] || null;
+        else if (new URLSearchParams(location.search).get('registered') === '1') target = '/thanks/';
+        if (target) location.replace(target + (hash.indexOf('?') > -1 ? hash.slice(hash.indexOf('?')) : ''));
+      })();
+    </script>
+  </Fragment>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line">AI coding for developers and enterprises</div>
+        <h1 class="wide">Train your developers. Roll out AI coding to your whole organization.</h1>
+        <p class="lede">
+          yogine.dev runs hands-on training for developers and builds solutions for enterprises: hardened skills and
+          agents, and a governance framework covering security, compliance and LLM cost.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/enroll/?course=foundation">Join the free 90-minute session</a>
+          <a class="btn btn-ghost" href="/contact/?interest=solutions">Talk to us about Solutions</a>
+        </div>
+      </div>
+      <div class="paths">
+        <a class="path-card" href="/training/">
+          <div class="path-audience">For developers</div>
+          <h2>Training</h2>
+          <p>Hands-on workshops on your own repo, from a free 90-minute Foundation session to advanced techniques.</p>
+          <span class="path-go">Explore training</span>
+        </a>
+        <a class="path-card" href="/solutions/">
+          <div class="path-audience">For engineering organizations</div>
+          <h2>Solutions</h2>
+          <p>Hardened skills and agents, plus a governance framework for security, compliance and LLM cost.</p>
+          <span class="path-go">Explore solutions</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Training</h2>
+          <p class="desc">Start with the free 90-minute Foundation session, then go hands-on with your own repo.</p>
+        </div>
+        <a href="/training/" class="btn btn-ghost">All training details</a>
+      </div>
+      <div class="course-list">
+        {COURSES.map((c) => <CourseRow course={c} bulletLimit={3} />)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Next few sessions</h2>
+          <p class="desc">Dates, format, and where each cohort meets.</p>
+        </div>
+        <a href="/sessions/" class="btn btn-ghost">Full schedule</a>
+      </div>
+      <SessionList limit={3} />
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Solutions for enterprises</h2>
+          <p class="desc">Roll out AI coding agents and skills across your engineering organization, with the guardrails built in.</p>
+        </div>
+        <a href="/solutions/" class="btn btn-ghost">How it works</a>
+      </div>
+      <div class="cols-3">
+        <div>
+          <h3>Hardened skills and agents</h3>
+          <p>A shared, reviewed and versioned library built for your codebase and conventions.</p>
+        </div>
+        <div>
+          <h3>Security and compliance</h3>
+          <p>Access control, vetting, review policy and audit trails for every skill, agent and connection.</p>
+        </div>
+        <div>
+          <h3>LLM FinOps</h3>
+          <p>Visibility into LLM spend across the organization, with controls and optimization.</p>
+        </div>
+      </div>
+      <p style="margin-top: 32px;"><a class="btn btn-primary" href="/contact/?interest=solutions">Talk to us</a></p>
+    </div>
+  </section>
+</Base>

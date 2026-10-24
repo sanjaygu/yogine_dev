@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import WaitlistForm from '../components/WaitlistForm.astro';
+---
+<Base path="/waitlist/" cta={null} title="Get notified — yogine.dev" description="Get notified when yogine.dev schedules a new workshop.">
+  <div class="page wrap">
+    <div class="page-card">
+      <h1 style="font-size: 1.9rem;">Get notified when a session is scheduled</h1>
+      <p style="color: var(--color-muted);">Tell us which courses you want and how to reach you. We'll let you know when a date is published.</p>
+      <WaitlistForm idp="wl" />
+      <p style="margin-top: 32px;"><a href="/sessions/" class="btn btn-ghost">Back to sessions</a></p>
+    </div>
+  </div>
+  <script is:inline>
+    var course = new URLSearchParams(location.search).get('course');
+    var box = course && document.getElementById('wl-course-' + course);
+    if (box) box.checked = true;
+  </script>
+</Base>

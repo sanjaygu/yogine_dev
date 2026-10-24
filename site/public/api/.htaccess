@@ -1,0 +1,7 @@
+# Keep sign-up data, logs, the catalog copy and secrets private.
+<FilesMatch "\.(txt|log|csv|json|jsonl)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "^config\.secrets(\.example)?\.php$">
+    Require all denied
+</FilesMatch>

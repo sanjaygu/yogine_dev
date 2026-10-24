@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+dist-fixture/
+public/api/catalog.json
+public/api/config.secrets.php
+public/api/data/
+tests/.tmp/
+dist-analytics/
+.env
+.env.*

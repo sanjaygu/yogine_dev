@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+import CourseRow from '../components/CourseRow.astro';
+import { COURSES, courseBySlug, priceLabel } from '../lib/catalog.js';
+
+const agenda = [
+  ['How AI coding evolved', 'From one-off prompts, to agents that work in multiple steps, to skills you package once and reuse.'],
+  ['What a skill is', 'Scope, trigger conditions, examples and expected output — plus a live demo of the same task with and without a skill.'],
+  ['Environment setup', 'Install and connect your tools to a real project of your own, and run one task before moving on.'],
+  ['Hands-on: use skills on real work', "Pick a task from your repo, apply a skill, adjust it when it doesn't quite fit, and compare against a raw prompt."],
+  ['Finding skills and MCP servers', 'Where to look, how to vet before you install, and how to connect an MCP server and use it in a real task.'],
+  ['Writing your own', 'Enough to outline the scope and triggers for a task you repeat, so you know authoring is approachable.'],
+  ['Governance preview', 'Code review, access control and audit trails — what changes when agent use grows past one person.'],
+];
+
+// Short answers to "which one is for me?". Length and price come from the catalog so they never disagree with it.
+const compare = {
+  foundation: { who: 'Curious about AI-assisted coding and want a first look', format: 'Live, virtual', leave: 'A clear picture of prompts versus agents versus skills, and where skills pay off' },
+  professional: { who: 'Working developers new to AI-assisted coding', format: '1 day in person, or 3 virtual sessions', leave: 'A 50-skill plugin pack installed and tested on your machine' },
+  advanced: { who: 'Professional graduates, or developers already at that level', format: '1 day in person', leave: 'The Professional and Advanced skill packs, and the techniques to write your own and run your own MCP server' },
+  'enterprise-sdlc': { who: 'Engineering leads rolling agentic coding out across an organization', format: 'Scoped to your organization', leave: 'A curriculum and governance setup built around your stack' },
+};
+---
+<Base path="/training/" title="Training — yogine.dev" description="Hands-on AI coding workshops for working developers: a free 90-minute Foundation session, then Professional and Advanced workshops on your own repo, with two months of support.">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line">Training · hands-on workshops for working developers</div>
+        <h1>Skip the tutorials. Ship like you've already got a team behind you.</h1>
+        <p class="lede">
+          Racing to an MVP? Moving from writing code to directing agents? Sizing up what agentic coding means for your
+          team? Bring your laptop with your dev environment set up and learn hands-on. Walk away Monday-ready with a pack
+          of professional-grade skills and agents installed, and 2 months of support after.
+        </p>
+        <div class="hero-actions">
+          <a href="/sessions/" class="btn btn-primary">See upcoming sessions</a>
+        </div>
+      </div>
+      <div class="term-window" role="img" aria-label="Comparison: raw prompting means re-explaining context, uneven output and forgotten constraints; using a skill means context packaged once, consistent quality and faster repeats.">
+        <div class="term-bar">
+          <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+          <span class="term-title">same task, two ways</span>
+        </div>
+        <div class="term-body" aria-hidden="true">
+          <div class="term-col-label">// raw prompting</div>
+          <div class="term-row bad"><span class="mark">✕</span><span>Re-explain context every session</span></div>
+          <div class="term-row bad"><span class="mark">✕</span><span>Output quality varies run to run</span></div>
+          <div class="term-row bad"><span class="mark">✕</span><span>Easy to forget a constraint</span></div>
+          <div class="term-divider"></div>
+          <div class="term-col-label">// using a skill</div>
+          <div class="term-row good"><span class="mark">✓</span><span>Context packaged once, reused</span></div>
+          <div class="term-row good"><span class="mark">✓</span><span>Consistent quality, every run</span></div>
+          <div class="term-row good"><span class="mark">✓</span><span>Faster the more you repeat it</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stat-strip">
+    <div class="wrap">
+      <span><strong>4</strong> training levels</span>
+      <span><strong>Free</strong> 90-min Foundation</span>
+      <span><strong>7 hrs</strong> hands-on per full workshop</span>
+      <span>bring <strong>your laptop</strong>, dev env ready</span>
+      <span>small, <strong>hands-on</strong> cohorts</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Courses</h2>
+          <p class="desc">The full workshops are hands-on and built around a real codebase — yours. Not sure yet? The free Foundation session is a 90-minute first look.</p>
+        </div>
+      </div>
+      <div class="course-list">
+        {COURSES.map((c) => <CourseRow course={c} />)}
+      </div>
+      <p class="session-note">Training a whole team, or rolling AI coding out across your organization? See <a href="/solutions/">Solutions</a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Which level is right for you?</h2>
+          <p class="desc">Not sure where you fit? Start with the row that sounds most like you.</p>
+        </div>
+      </div>
+      <table class="compare">
+        <caption class="visually-hidden">Comparison of the four training levels</caption>
+        <thead>
+          <tr>
+            <th scope="col">Level</th>
+            <th scope="col">Who it's for</th>
+            <th scope="col">Length</th>
+            <th scope="col">Format</th>
+            <th scope="col">Price</th>
+            <th scope="col">You leave with</th>
+          </tr>
+        </thead>
+        <tbody>
+          {COURSES.map((c) => (
+            <tr>
+              <th scope="row">
+                <span class="course-level">{c.level}</span>
+                <a href={c.custom ? '/contact/?interest=enterprise-training' : `/enroll/?course=${c.slug}`} class="compare-name">{c.name}</a>
+              </th>
+              <td data-label="Who it's for">{compare[c.slug].who}</td>
+              <td data-label="Length">{c.duration}</td>
+              <td data-label="Format">{compare[c.slug].format}</td>
+              <td data-label="Price"><span class="price-tag">{priceLabel(c)}</span></td>
+              <td data-label="You leave with">{compare[c.slug].leave}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>A Professional workshop, start to finish</h2>
+          <p class="desc">The order we work through it, ending with skills installed and tested on your machine.</p>
+        </div>
+      </div>
+      <ol class="agenda">
+        {agenda.map((a, i) => (
+          <li>
+            <span class="course-index" aria-hidden="true">0{i + 1}</span>
+            <div><h3>{a[0]}</h3><p>{a[1]}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div>
+        <h2 style="font-size: 1.5rem;">Before a full workshop</h2>
+        <ul class="bullets">
+          <li>A laptop with your normal development environment set up.</li>
+          <li>VS Code or Cursor installed.</li>
+          <li>A model connected — Claude or GPT.</li>
+          <li>A repo of your own to work on.</li>
+        </ul>
+      </div>
+      <div class="faq">
+        <h2 style="font-size: 1.5rem;">Questions</h2>
+        <details>
+          <summary>Where should I start?</summary>
+          <p>New to AI-assisted coding and want a first look? Join the free 90-minute Foundation session. Ready to work on your own repo? Reserve a seat in the Professional workshop.</p>
+        </details>
+        <details>
+          <summary>Who is the Professional course for?</summary>
+          <p>{courseBySlug('professional').audience}</p>
+        </details>
+        <details>
+          <summary>What happens after I pay?</summary>
+          <p>Stripe emails you a payment receipt. We then email you your session details and a short prep checklist.</p>
+        </details>
+        <details>
+          <summary>What if my plans change?</summary>
+          <p>Moving to another session is free. Cancel 72 or more hours ahead for a full refund. The details are in our <a href="/refund-policy/">Refund &amp; Cancellation Policy</a>.</p>
+        </details>
+        <details>
+          <summary>What does the 2 months of support include?</summary>
+          <p>You can send us questions after the workshop as you put what you learned to work. It's virtual and included in the course price.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import SessionList from '../components/SessionList.astro';
+import { eventSchema } from '../lib/catalog.js';
+
+const events = eventSchema();
+const jsonLd = events.length ? { '@context': 'https://schema.org', '@graph': events } : null;
+---
+<Base path="/sessions/" title="Upcoming sessions — yogine.dev" description="Upcoming yogine.dev workshop dates, formats and venues. In-person sessions run in Milpitas, CA, with virtual options." jsonLd={jsonLd}>
+  <section style="padding-top: 52px;">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h1 style="font-size: 1.9rem; max-width: 18ch;">Upcoming sessions</h1>
+          <p class="desc">In-person sessions run at India Community Center (ICC) in Milpitas, CA — plus virtual options.</p>
+        </div>
+      </div>
+      <SessionList emptyHeading="h2" />
+    </div>
+  </section>
+</Base>

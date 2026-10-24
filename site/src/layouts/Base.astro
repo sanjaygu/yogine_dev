@@ -1,0 +1,118 @@
+---
+import '../styles/global.css';
+import { SITE_URL } from '../lib/catalog.js';
+
+const {
+  title = 'yogine.dev — AI coding training and enterprise solutions',
+  description = 'AI coding training for developers and solutions for enterprises: hardened skills and agents, and a governance framework for security, compliance and LLM cost. Start with a free 90-minute Foundation session.',
+  path = '/',
+  cta = 'enroll',
+  jsonLd = null,
+} = Astro.props;
+
+const canonical = new URL(path, SITE_URL).href;
+const ogImage = new URL('/og-image.png', SITE_URL).href;
+const nav = [
+  { href: '/training/', label: 'Training' },
+  { href: '/solutions/', label: 'Solutions' },
+  { href: '/sessions/', label: 'Sessions' },
+  { href: '/contact/', label: 'Contact' },
+];
+const ctas = {
+  enroll: { href: '/enroll/', label: 'Reserve a seat' },
+  solutions: { href: '/contact/?interest=solutions', label: 'Talk to us' },
+};
+const headerCta = cta ? ctas[cta] : null;
+---
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#14171c" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="yogine.dev" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="yogine.dev: train your developers and roll out AI coding to your whole organization" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <script is:inline>document.documentElement.className = 'js';</script>
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <section id="consentBanner" class="consent" aria-label="Analytics choices" hidden>
+      <div class="wrap">
+        <p>
+          We'd like to use analytics to improve the site. If you accept, we record visits, clicks and scrolling (form fields
+          are hidden) and, if you give us your email, link them to you. Declining changes nothing.
+          <a href="/privacy/">Privacy notice</a>
+        </p>
+        <div class="consent-actions">
+          <button type="button" class="btn btn-ghost" data-consent="granted">Accept analytics</button>
+          <button type="button" class="btn btn-ghost" data-consent="denied">Decline</button>
+        </div>
+      </div>
+    </section>
+
+    <header class="site-header">
+      <div class="header-row">
+        <a href="/" class="logo">yogine<span>.dev</span></a>
+        <nav class="primary-nav" id="primaryNav" aria-label="Main">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+          ))}
+        </nav>
+        <div class="header-actions">
+          {headerCta && <a href={headerCta.href} class="btn btn-primary btn-sm">{headerCta.label}</a>}
+          <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primaryNav">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+
+    <footer>
+      <div class="wrap foot-row">
+        <div>
+          <a href="/" class="logo foot-logo">yogine<span>.dev</span></a>
+          <div>AI coding training for developers, and solutions for enterprises.</div>
+        </div>
+        <div>
+          <div>Questions? <a href="/contact/" class="text-link">Contact us</a> or write to <a href="mailto:hello@yogine.dev" class="text-link">hello@yogine.dev</a>.</div>
+          <div class="foot-links">
+            <a href="/training/">Training</a>
+            <a href="/solutions/">Solutions</a>
+            <a href="/sessions/">Sessions</a>
+            <a href="/refund-policy/">Refund &amp; Cancellation Policy</a>
+            <a href="/privacy/">Privacy notice</a>
+            <button type="button" class="link-button" id="consentReopen" hidden>Analytics choices</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      import '../scripts/nav.js';
+      import '../scripts/sessions.js';
+      import '../scripts/consent.js';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+---
+import { upcomingFor, nextStartLabel, priceLabel } from '../lib/catalog.js';
+
+const { course: c, bulletLimit = 0, headingLevel = 'h3' } = Astro.props;
+const bullets = bulletLimit ? c.bullets.slice(0, bulletLimit) : c.bullets;
+const next = c.custom ? null : upcomingFor(c.slug)[0];
+const Heading = headingLevel;
+
+const cta = c.custom
+  ? { href: `/contact/?interest=enterprise-training`, label: 'Talk to us', cls: 'btn-ghost', note: 'scoped to your org' }
+  : { href: `/enroll/?course=${c.slug}`, label: 'Reserve a seat', cls: c.free ? 'btn-primary' : 'btn-ghost', note: '' };
+---
+<div class="course-row">
+  <div class="course-index" aria-hidden="true">{c.index}</div>
+  <div class="course-name">
+    <span class="course-level">{c.level}</span>
+    <Heading>{c.name}</Heading>
+    <p class="course-duration">{c.duration}</p>
+    {next && <span class="course-next" data-session-end={next.end}>{nextStartLabel(c.slug)}</span>}
+    <p class="course-audience">{c.audience}</p>
+  </div>
+  <div class="course-mid">
+    <ul class="bullets">
+      {bullets.map((b) => <li>{b}</li>)}
+    </ul>
+  </div>
+  <div class="course-cta">
+    <span class="price-tag">{priceLabel(c)}</span>
+    {cta.note && <span class="price-note">{cta.note}</span>}
+    <a class={`btn ${cta.cls}`} href={cta.href}>
+      {cta.label}<span class="visually-hidden"> — {c.name}</span>
+    </a>
+  </div>
+</div>

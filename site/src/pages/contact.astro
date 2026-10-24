@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+
+const interests = [
+  ['solutions', 'Solutions for my organization'],
+  ['training-team', 'Training for my team'],
+  ['enterprise-training', 'Enterprise training (Governed Agentic SDLC)'],
+  ['other', 'Something else'],
+];
+---
+<Base path="/contact/" cta={null} title="Contact — yogine.dev" description="Contact yogine.dev about Solutions, training for your team, or anything else.">
+  <div class="page wrap">
+    <div class="page-card">
+      <h1 style="font-size: 1.9rem;">Contact us</h1>
+      <p style="color: var(--color-muted);">Tell us what you're trying to do and how to reach you.</p>
+
+      <form data-form="contact" data-success="contact-success" id="contact-form" class="form-card" method="post" novalidate>
+        <div data-error-summary class="error-summary" tabindex="-1" role="alert" hidden></div>
+
+        <div class="field">
+          <label for="contact-interest">What is this about?</label>
+          <select name="interest" id="contact-interest">
+            {interests.map(([value, label]) => <option value={value}>{label}</option>)}
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="contact-name">Name</label>
+          <input type="text" name="name" id="contact-name" autocomplete="name" />
+          <p class="field-error" data-error-for="name" id="err-name" hidden></p>
+        </div>
+
+        <p class="form-note" style="margin-bottom: 8px;">Give an email, a phone number, or both.</p>
+        <p class="field-error" data-error-for="contact" id="err-contact" hidden></p>
+        <div class="field-row">
+          <div class="field">
+            <label for="contact-email">Email</label>
+            <input type="email" name="email" id="contact-email" autocomplete="email" inputmode="email" />
+            <p class="field-error" data-error-for="email" id="err-email" hidden></p>
+          </div>
+          <div class="field">
+            <label for="contact-phone">Phone</label>
+            <input type="tel" name="phone" id="contact-phone" autocomplete="tel" inputmode="tel" />
+            <p class="field-error" data-error-for="phone" id="err-phone" hidden></p>
+          </div>
+        </div>
+
+        <div class="field-row" id="orgFields">
+          <div class="field">
+            <label for="contact-company">Company <span class="optional-tag">(optional)</span></label>
+            <input type="text" name="company" id="contact-company" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="contact-team">Engineering team size <span class="optional-tag">(optional)</span></label>
+            <input type="text" name="teamSize" id="contact-team" inputmode="numeric" placeholder="For example: 50" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="contact-message">Message</label>
+          <textarea name="message" id="contact-message" rows="5"></textarea>
+          <p class="field-error" data-error-for="message" id="err-message" hidden></p>
+        </div>
+
+        <div class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+
+        <p class="form-note">
+          We use these details to reply, and we note which page you came from. See our <a href="/privacy/">privacy notice</a>.
+        </p>
+        <noscript><p class="notice">This form needs JavaScript. To reach us without it, write to <a class="text-link" href="mailto:hello@yogine.dev">hello@yogine.dev</a>.</p></noscript>
+        <p class="form-error" data-form-error role="alert" hidden></p>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" disabled>Send message</button>
+        </div>
+      </form>
+      <div id="contact-success" class="form-success" hidden></div>
+    </div>
+  </div>
+  <script>
+    import '../scripts/forms.js';
+  </script>
+  <script is:inline>
+    (function () {
+      var select = document.getElementById('contact-interest');
+      var org = document.getElementById('orgFields');
+      var wanted = new URLSearchParams(location.search).get('interest');
+      if (wanted && select.querySelector('option[value="' + wanted + '"]')) select.value = wanted;
+      function sync() { org.hidden = !(select.value === 'solutions' || select.value === 'enterprise-training' || select.value === 'training-team'); }
+      select.addEventListener('change', sync);
+      sync();
+    })();
+  </script>
+</Base>

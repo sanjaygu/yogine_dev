@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base path="/thanks/" cta={null} title="Thank you — yogine.dev" description="Your registration with yogine.dev.">
+  <div class="page wrap tall-page">
+    <div class="confirm-box">
+      <div class="confirm-mark" id="thanksMark">✓ thank you</div>
+      <h1 id="thanksHeading" style="font-size: 1.9rem;">Watch your inbox.</h1>
+      <p id="thanksBody">
+        Stripe is emailing your payment receipt. We'll follow up by email with your session details and a short prep
+        checklist. Nothing after a while? Check your spam folder, then write to
+        <a class="text-link" href="mailto:hello@yogine.dev">hello@yogine.dev</a>.
+      </p>
+    </div>
+
+    <div class="page-card" id="profileCard" hidden style="margin: 0 auto;">
+      <form data-form="profile" id="profileForm" class="panel" method="post" novalidate>
+        <h2>Help us prepare <span class="optional-tag">(optional)</span></h2>
+        <p>These answers help us pace the room. You can skip this.</p>
+        <div class="field-row">
+          <div class="field">
+            <label for="p-coding">Coding experience</label>
+            <select name="codingExperience" id="p-coding">
+              <option value="">Select one</option>
+              <option value="<1">Less than 1 year</option>
+              <option value="1-3">1–3 years</option>
+              <option value="3-7">3–7 years</option>
+              <option value="7+">7+ years</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="p-ai">Experience with AI coding tools</label>
+            <select name="aiExperience" id="p-ai">
+              <option value="">Select one</option>
+              <option value="none">None yet</option>
+              <option value="autocomplete">Autocomplete only</option>
+              <option value="chat">Chat assistant for questions</option>
+              <option value="agentic">Agentic / agent mode regularly</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="p-expect">What are you hoping to leave with?</label>
+          <textarea name="expectations" id="p-expect" rows="3" placeholder="For example: a working skill for our code review checklist"></textarea>
+        </div>
+        <p class="form-error" data-form-error role="alert" hidden></p>
+        <div class="form-actions" style="justify-content: flex-start;">
+          <button type="submit" class="btn btn-primary">Save answers</button>
+        </div>
+      </form>
+      <p id="profileDone" class="notice" hidden>Thanks, we have your answers.</p>
+    </div>
+
+    <p style="text-align: center; margin-top: 24px;"><a href="/sessions/" class="btn btn-ghost">Back to schedule</a></p>
+  </div>
+  <script>
+    import '../scripts/thanks.js';
+  </script>
+</Base>

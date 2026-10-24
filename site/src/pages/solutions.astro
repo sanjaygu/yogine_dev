@@ -1,0 +1,156 @@
+---
+import Base from '../layouts/Base.astro';
+
+const steps = [
+  ['Assess', 'Find where you are on the curve: which skills, agents and MCP connections are in use today, who owns them, and what they cost.'],
+  ['Build and pilot', 'Stand up the skills, agents and guardrails with one team, scoped to your stack and standards.'],
+  ['Roll out', 'Extend to every team, train the people using it, and hand over a framework your organization can run itself.'],
+];
+---
+<Base path="/solutions/" cta="solutions" title="Solutions — yogine.dev" description="Roll out AI coding across your engineering organization with hardened skills and agents and a governance framework covering security, compliance and LLM cost.">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow-line">Solutions for engineering organizations</div>
+      <h1 class="wide">Roll out AI coding across your organization, with the guardrails built in.</h1>
+      <p class="lede" style="max-width: 58ch;">
+        We help engineering organizations adopt AI coding agents and skills at scale: hardened skills and agents your
+        teams can trust, and a governance framework covering security, compliance and LLM cost.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/contact/?interest=solutions">Talk to us</a>
+        <a class="btn btn-ghost" href="/training/">Training for developers</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>What goes wrong when adoption outpaces oversight</h2>
+          <p class="desc">AI coding usually starts with individual developers. Without shared standards, three problems show up quickly, and a fourth on the bill.</p>
+        </div>
+      </div>
+      <div class="risk-grid">
+        <div><h3>Shadow tooling</h3><p>Skills and agents spread from person to person, with no visibility for security or engineering leads.</p></div>
+        <div><h3>Unreviewed connections</h3><p>Agents gain reach into real systems through MCP servers that nobody signed off.</p></div>
+        <div><h3>Inconsistent quality</h3><p>The same job produces different results depending on whose skill ran it.</p></div>
+        <div><h3>Unmanaged LLM spend</h3><p>Usage grows with adoption, and nobody can see or control what it costs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div>
+        <h2 style="font-size: 1.9rem;">Hardened skills and agents</h2>
+        <p style="color: var(--color-muted);">A shared library built for your codebase and conventions, reviewed before anyone uses it and versioned so every team works from the same standard.</p>
+      </div>
+      <ul class="bullets">
+        <li>Built around repeatable work: code review standards, test generation, documentation and codebase onboarding.</li>
+        <li>Each skill has a defined scope, trigger conditions, examples and expected output, so it behaves the same way on every run.</li>
+        <li>Reviewed and versioned before release, with changes going through the same review as code.</li>
+        <li>MCP connections to your ticketing, docs and internal tools, vetted and approved before any agent can reach them.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Governance framework</h2>
+          <p class="desc">Who may build, publish and run skills and agents, against which systems, and at what cost: written down, enforced and auditable.</p>
+        </div>
+      </div>
+      <div class="cols-3">
+        <div>
+          <h3>Security</h3>
+          <ul class="bullets">
+            <li>Who can build, publish and run skills and agents, and against which systems.</li>
+            <li>Access tiers by role, with each skill and agent limited to the access its task needs.</li>
+            <li>Vetting before any skill or MCP server is installed.</li>
+            <li>Human review before merge, including AI-written code.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Compliance</h3>
+          <ul class="bullets">
+            <li>Code review policy applied to AI-assisted work.</li>
+            <li>Audit trails showing who ran what, through which skill, against which system.</li>
+            <li>Standards and templates enforced, so every team's skills meet the same bar before they ship.</li>
+            <li>Policy checks that move from manual review toward automation.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>LLM FinOps</h3>
+          <ul class="bullets">
+            <li>Cost monitoring across teams and the organization as a whole.</li>
+            <li>Controls to keep LLM spend within budget as adoption grows.</li>
+            <li>Optimization through model choice, context management and, where it makes sense, hosting your own LLM.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Where you are today</h2>
+          <p class="desc">Most organizations start at Crawl, whether they plan to or not. We help you find your level and move up.</p>
+        </div>
+      </div>
+      <div class="cols-3">
+        <div>
+          <h3>Crawl</h3>
+          <ul class="bullets"><li>Individual, ad hoc use.</li><li>No shared skill library.</li><li>Skills live on personal laptops.</li></ul>
+        </div>
+        <div>
+          <h3>Walk</h3>
+          <ul class="bullets"><li>A shared skill library.</li><li>Basic vetting before install.</li><li>Access tiers by role.</li></ul>
+        </div>
+        <div>
+          <h3>Run</h3>
+          <ul class="bullets"><li>Versioned, reviewed skills.</li><li>Audit trails on every run.</li><li>Automated policy enforcement.</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>How we work with you</h2>
+          <p class="desc">Scoped to your stack, your maturity level and your goals.</p>
+        </div>
+      </div>
+      <ol class="agenda">
+        {steps.map((s, i) => (
+          <li>
+            <span class="course-index" aria-hidden="true">0{i + 1}</span>
+            <div><h3>{s[0]}</h3><p>{s[1]}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="wrap">
+      <div>
+        <h2>Tell us where you are today.</h2>
+        <p>Share a few lines about your engineering organization and what you want to solve, and we'll come back to you.</p>
+      </div>
+      <a class="btn btn-primary" href="/contact/?interest=solutions">Talk to us</a>
+    </div>
+  </div>
+
+  <section style="padding-top: 36px;">
+    <div class="wrap">
+      <p class="session-note" style="margin: 0;">Only need your team trained? See <a href="/training/">Training</a>. Team and bulk bookings can be arranged.</p>
+    </div>
+  </section>
+</Base>

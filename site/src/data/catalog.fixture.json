@@ -1,0 +1,18 @@
+{
+  "venues": {
+    "icc": {
+      "name": "India Community Center (ICC)",
+      "street": "525 Los Coches St",
+      "city": "Milpitas",
+      "region": "CA",
+      "zip": "95035",
+      "url": "https://www.indiacc.org"
+    }
+  },
+  "sessions": [
+    { "id": "t1", "course": "foundation", "inDays": 30, "time": "4:00 PM PT", "startsAt": "16:00:00-08:00", "minutes": 90, "location": "Virtual · 90 min", "virtual": true },
+    { "id": "t2", "course": "professional", "inDays": 40, "venue": "icc" },
+    { "id": "t3", "course": "professional", "inDays": 45, "lasts": 7, "location": "Virtual · 3 sessions", "virtual": true },
+    { "id": "t4", "course": "advanced", "inDays": 55, "venue": "icc" }
+  ]
+}

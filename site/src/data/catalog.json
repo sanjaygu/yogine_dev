@@ -1,0 +1,191 @@
+{
+  "venues": {
+    "icc": {
+      "name": "India Community Center (ICC)",
+      "street": "525 Los Coches St",
+      "city": "Milpitas",
+      "region": "CA",
+      "zip": "95035",
+      "url": "https://www.indiacc.org"
+    }
+  },
+  "courses": [
+    {
+      "slug": "foundation",
+      "index": "01",
+      "name": "Coding with AI Agents and Skills",
+      "level": "Level 01 · Foundation",
+      "price": 0,
+      "free": true,
+      "duration": "90 minutes · live session",
+      "audience": "Developers and engineering leads curious about AI-assisted coding who want a first look before committing to a full workshop.",
+      "bullets": [
+        "A 90-minute introduction to AI-assisted agentic coding: how it moved from one-off prompts, to agents, to reusable skills.",
+        "See what a skill is — scope, triggers, examples and expected output — and how it compares with raw prompting on the same task.",
+        "Learn where skills pay off most: code review standards, test generation, documentation and codebase onboarding.",
+        "Free to attend. If you want to go hands-on with your own repo afterwards, the Professional workshop is the next step."
+      ]
+    },
+    {
+      "slug": "professional",
+      "index": "02",
+      "name": "AI Agentic Coding & Skills for Developers — Professional",
+      "level": "Level 02 · Professional",
+      "price": 199,
+      "paymentLink": "",
+      "duration": "7 hrs hands-on (1 day in person, or 3 virtual sessions) + 2 months virtual support",
+      "audience": "Working professionals with industry experience in software development and coding, but new to AI-assisted coding.",
+      "bullets": [
+        "Built for working developers with real industry experience who want to master AI-assisted agentic coding.",
+        "Understand the evolution of AI coding and the current landscape — skills, agents, prompts, MCP, memory management, context, and other topics.",
+        "Learn how to use skills and agents well, then how to find and evaluate good ones before you adopt them. We also teach you how to build your own skills.",
+        "You walk away with a 50-skill plugin pack, ready to build your next application. We will support you until you master what we taught you."
+      ],
+      "checklist": [
+        "A laptop with your normal development environment set up",
+        "VS Code or Cursor installed",
+        "A model connected (Claude or GPT)",
+        "A repo of your own to work on"
+      ],
+      "paymentLinkTest": ""
+    },
+    {
+      "slug": "advanced",
+      "index": "03",
+      "name": "AI Agentic Coding & Skills for Developers — Advanced",
+      "level": "Level 03 · Advanced",
+      "price": 495,
+      "paymentLink": "https://book.stripe.com/bJedR9a8kdVLd9h8oH2Ry02",
+      "duration": "1 day · 7 hrs in person + 2 months virtual support",
+      "audience": "Working professionals who've completed our Professional course, or already have an equivalent understanding.",
+      "bullets": [
+        "Built for developers who've completed our Professional course, or already work at that level.",
+        "Learn advanced techniques for writing skills, hosting your own MCP server, working with frameworks, optimizing LLM cost, hosting your own LLM, and building context.",
+        "You walk away with the Professional and Advanced skill plugin pack, ready to build your next application or become a superstar developer in your org. We will support you until you master what we taught you."
+      ],
+      "checklist": [
+        "A laptop with your normal development environment set up",
+        "VS Code or Cursor installed",
+        "A model connected (Claude or GPT)",
+        "A repo of your own to work on"
+      ],
+      "paymentLinkTest": ""
+    },
+    {
+      "slug": "enterprise-sdlc",
+      "index": "04",
+      "name": "Governed Agentic SDLC",
+      "level": "Level 04 · Enterprise",
+      "price": null,
+      "custom": true,
+      "duration": "1+ days · scoped to your org",
+      "audience": "Engineering leads and organizations ready to roll out agentic coding — and govern it — across their whole team.",
+      "bullets": [
+        "Everything in our developer-facing skills training, brought to your whole engineering org.",
+        "Governance of skills and agents — who's allowed to build, publish, and run them, and against which systems.",
+        "Security and compliance guardrails built for agentic development from the start, not bolted on after.",
+        "Enforcement of standards and templates, so every team's skills meet the same bar before they ship.",
+        "Cost monitoring and optimization — track and control LLM spend across your organization.",
+        "A curriculum scoped to your org's stack, maturity level, and goals — talk to us and we'll build it with you."
+      ]
+    }
+  ],
+  "sessions": [
+    {
+      "id": "e1",
+      "course": "professional",
+      "date": "Oct 3, 2026",
+      "start": "2026-10-03",
+      "end": "2026-10-03",
+      "venue": "icc"
+    },
+    {
+      "id": "e2",
+      "course": "professional",
+      "date": "Oct 10, 2026",
+      "start": "2026-10-10",
+      "end": "2026-10-10",
+      "venue": "icc"
+    },
+    {
+      "id": "e3",
+      "course": "professional",
+      "date": "Oct 13, 15 & 20, 2026",
+      "start": "2026-10-13",
+      "end": "2026-10-20",
+      "location": "Virtual · 3 sessions",
+      "virtual": true,
+      "note": "We will email the joining link before the first session."
+    },
+    {
+      "id": "e4",
+      "course": "advanced",
+      "date": "Oct 17, 2026",
+      "start": "2026-10-17",
+      "end": "2026-10-17",
+      "venue": "icc"
+    },
+    {
+      "id": "e5",
+      "course": "foundation",
+      "date": "Oct 6, 2026 · 4:00 PM PT",
+      "start": "2026-10-06",
+      "end": "2026-10-06",
+      "startAt": "2026-10-06T16:00:00-07:00",
+      "endAt": "2026-10-06T17:30:00-07:00",
+      "location": "Virtual · 90 min",
+      "virtual": true,
+      "note": "We will email the joining link before the session."
+    },
+    {
+      "id": "n1",
+      "course": "foundation",
+      "date": "Nov 10, 2026 · 4:00 PM PT",
+      "start": "2026-11-10",
+      "end": "2026-11-10",
+      "startAt": "2026-11-10T16:00:00-08:00",
+      "endAt": "2026-11-10T17:30:00-08:00",
+      "location": "Virtual · 90 min",
+      "virtual": true,
+      "note": "We will email the joining link before the session."
+    },
+    {
+      "id": "n2",
+      "course": "professional",
+      "date": "Nov 14, 2026",
+      "start": "2026-11-14",
+      "end": "2026-11-14",
+      "venue": "icc"
+    },
+    {
+      "id": "n3",
+      "course": "professional",
+      "date": "Nov 17, 19 & 24, 2026",
+      "start": "2026-11-17",
+      "end": "2026-11-24",
+      "location": "Virtual · 3 sessions",
+      "virtual": true,
+      "note": "We will email the joining link before the first session."
+    },
+    {
+      "id": "n4",
+      "course": "advanced",
+      "date": "Nov 21, 2026",
+      "start": "2026-11-21",
+      "end": "2026-11-21",
+      "venue": "icc"
+    },
+    {
+      "id": "n5",
+      "course": "foundation",
+      "date": "Nov 24, 2026 · 4:00 PM PT",
+      "start": "2026-11-24",
+      "end": "2026-11-24",
+      "startAt": "2026-11-24T16:00:00-08:00",
+      "endAt": "2026-11-24T17:30:00-08:00",
+      "location": "Virtual · 90 min",
+      "virtual": true,
+      "note": "We will email the joining link before the session."
+    }
+  ]
+}
